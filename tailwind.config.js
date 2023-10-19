@@ -11,8 +11,11 @@ export default {
       height: {
         menu: "calc(100dvh - 1.5rem)",
       },
+      width: {
+        menu: "calc(100dvw - 1.5rem)",
+      },
       translate: {
-        menu: "123%",
+        menu: "120%",
       },
     },
   },

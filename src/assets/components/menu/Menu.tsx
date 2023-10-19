@@ -14,20 +14,20 @@ export default function Menu() {
 
   return (
     <section
-      className={`absolute transition-all duration-500 flex flex-row justify-center md:w-1/4 w max-w-sm h-menu m-3 p-3 rounded-lg text-white ${
+      className={`absolute transition-all duration-500 flex flex-row justify-center md:w-1/4 w-menu h-menu m-3 p-3 rounded-lg text-white ${
         styles.menu
-      } ${isMenuOpen ? `-translate-x-menu` : `translate-x-0`}`}
+      } ${isMenuOpen ? `translate-x-0` : `-translate-x-menu`}`}
     >
       <div
         className={`absolute transition-all duration-500 ${
-          isMenuOpen ? `-right-36` : `right-3`
+          isMenuOpen ? `right-3` : `-right-36`
         }`}
       >
         <Fab onClick={handleIconClick} color="secondary">
-          <Grow in={isMenuOpen} style={{ position: "absolute" }}>
+          <Grow in={!isMenuOpen} style={{ position: "absolute" }}>
             <MenuRoundedIcon />
           </Grow>
-          <Grow in={!isMenuOpen} style={{ position: "absolute" }}>
+          <Grow in={isMenuOpen} style={{ position: "absolute" }}>
             <CloseRoundedIcon />
           </Grow>
         </Fab>
