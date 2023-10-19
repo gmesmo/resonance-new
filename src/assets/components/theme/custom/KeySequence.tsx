@@ -6,13 +6,14 @@ const KeySequenceComponent: React.FC = () => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      setKeySequence((prevSequence) => [...prevSequence, event.key]);
+      const newSequence = [...keySequence, event.key];
+      setKeySequence(newSequence);
 
-      if (keySequence.length >= correctSequence.length) {
+      if (newSequence.length >= correctSequence.length) {
         setKeySequence([event.key]);
       }
 
-      if (keySequence.join("") === correctSequence.join("")) {
+      if (newSequence.join("") === correctSequence.join("")) {
         // Sequência correta
         document.documentElement.setAttribute("data-theme", "hayata");
         setKeySequence([]);
