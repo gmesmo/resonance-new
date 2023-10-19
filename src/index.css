@@ -12,4 +12,8 @@
     --color-bg: 26 26 26;
     --color-content: 255 255 255;
   }
+  :root[data-theme="hayata"] {
+    --color-bg: 26 26 26;
+    --color-accent: 255 0 0;
+  }
 }
