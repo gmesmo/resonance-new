@@ -29,6 +29,14 @@
   user-select: none;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .glass {
   /* From https://css.glass */
   background: rgba(0, 0, 0, 0.65);

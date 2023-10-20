@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 export default function Home() {
   return (
     <div
-      className={`${styles.logoWrapper} relative w-full md:w-[20%] h-auto flex flex-row my-0 mx-auto`}
+      className={`${styles.logoWrapper} relative w-72 md:w-[20%] h-auto flex flex-row my-0 mx-auto`}
     >
       <img className={`absolute w-full translate-y-[15%]`} src={logo} />
       <img

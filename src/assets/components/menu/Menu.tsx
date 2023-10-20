@@ -14,7 +14,7 @@ export default function Menu() {
 
   return (
     <section
-      className={`absolute transition-all duration-500 flex flex-row justify-center md:w-1/4 
+      className={`absolute z-10 transition-all duration-500 flex flex-row justify-center md:w-1/4 
                   w-menu h-menu m-3 p-3 rounded-lg text-white 
                   glass ${isMenuOpen ? `translate-x-0` : `-translate-x-menu`}`}
     >
