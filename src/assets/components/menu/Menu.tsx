@@ -19,7 +19,7 @@ export default function Menu() {
     >
       <div
         className={`absolute transition-all duration-500 ${
-          isMenuOpen ? `right-3` : `md:-right-1/3 -right-32`
+          isMenuOpen ? `right-3` : `md:-right-35% -right-32`
         }`}
       >
         <Fab onClick={handleIconClick} color="secondary">

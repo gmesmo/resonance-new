@@ -8,7 +8,7 @@ import LocalStorageHandler from "./assets/components/localStorage/LocalStorageHa
 
 function App() {
   return (
-    <div className="flex flex-row h-screen w-screen text-content bg-bg transition-all duration-500">
+    <div className="flex flex-row justify-content align-middle h-screen w-screen text-content bg-bg transition-all duration-500">
       <Menu />
       <KeySequenceComponent />
 

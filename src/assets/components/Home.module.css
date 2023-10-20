@@ -1,0 +1,29 @@
+.logoWrapper img:nth-child(1) {
+  filter: invert(89%) sepia(86%) saturate(4856%) hue-rotate(359deg)
+    brightness(105%) contrast(104%);
+}
+
+.logoWrapper img:nth-child(2) {
+  filter: invert(29%) sepia(96%) saturate(5761%) hue-rotate(294deg)
+    brightness(114%) contrast(131%);
+}
+
+.logoWrapper img:nth-child(3) {
+  filter: invert(84%) sepia(60%) saturate(3115%) hue-rotate(113deg)
+    brightness(112%) contrast(104%);
+}
+
+.logoWrapper img {
+  z-index: 5;
+  mix-blend-mode: lighten;
+  transition: all 0.5s;
+}
+
+.logoWrapper:hover img {
+  transform: translate(0%, 10%);
+}
+
+:root[data-theme="light"] .logoWrapper img,
+:root[data-theme="judy"] .logoWrapper img {
+  mix-blend-mode: darken;
+}

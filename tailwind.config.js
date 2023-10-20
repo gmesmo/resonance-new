@@ -18,6 +18,9 @@ export default {
       translate: {
         menu: "120%",
       },
+      inset: {
+        "35%": "35%",
+      },
     },
   },
   plugins: [],
