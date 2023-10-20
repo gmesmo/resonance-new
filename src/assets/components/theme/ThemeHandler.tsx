@@ -22,6 +22,7 @@ export default function ThemeHandler() {
         overflow: "hidden",
         backgroundColor: currentTheme === "dark" ? "#1a1a1a" : "",
       }}
+      className={currentTheme === "light" ? `bg-[#1565c0]` : `bg-[#1a1a1a]`}
     >
       <Slide
         direction={currentTheme === "light" ? "left" : "right"}

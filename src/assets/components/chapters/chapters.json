@@ -1,0 +1,56 @@
+[
+  {
+    "chapterNumber": 1,
+    "title": "Capítulo 1: O Começo",
+    "releaseDate": "2023-10-19",
+    "text": "Este é o texto do capítulo 1. Bla bla bla...",
+    "options": [
+      {
+        "id": 1,
+        "text": "Escolha 1",
+        "action": "Ir para o Capítulo 2"
+      },
+      {
+        "id": 2,
+        "text": "Escolha 2",
+        "action": "Ir para o Capítulo 3"
+      }
+    ]
+  },
+  {
+    "chapterNumber": 2,
+    "title": "Capítulo 2: A Reviravolta",
+    "releaseDate": "2023-10-20",
+    "text": "Este é o texto do capítulo 2. Mais conteúdo interessante...",
+    "options": [
+      {
+        "id": 1,
+        "text": "Escolha 1",
+        "action": "Ir para o Capítulo 3"
+      },
+      {
+        "id": 2,
+        "text": "Escolha 2",
+        "action": "Fim da História"
+      }
+    ]
+  },
+  {
+    "chapterNumber": 3,
+    "title": "Capítulo 3: O Final",
+    "releaseDate": "2023-10-21",
+    "text": "Este é o texto do capítulo 3. O desfecho da história...",
+    "options": [
+      {
+        "id": 1,
+        "text": "Escolha 1",
+        "action": "Fim da História"
+      },
+      {
+        "id": 2,
+        "text": "Escolha 2",
+        "action": "Voltar para o Capítulo 1"
+      }
+    ]
+  }
+]

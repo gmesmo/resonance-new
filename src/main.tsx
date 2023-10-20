@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { StyledEngineProvider } from "@mui/material/styles";
 
 // Função para verificar e definir o tema com base no sistema do usuário
 function setThemeBasedOnSystemPreference() {
@@ -22,6 +23,8 @@ if (!document.documentElement.hasAttribute("data-theme")) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <StyledEngineProvider injectFirst>
+      <App />
+    </StyledEngineProvider>
   </React.StrictMode>
 );
