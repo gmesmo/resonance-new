@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 function LocalStorageHandler() {
   const [cookies, setCookies] = useState(false);
+  const [cookiesAlert, setCookiesAlert] = useState(true);
 
   useEffect(() => {
     // Verifica se o localStorage é suportado pelo navegador
@@ -20,20 +21,30 @@ function LocalStorageHandler() {
 
   return (
     <>
-      <div
-        className={`flex flex-col justify-center items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
-      >
-        Esse site utiliza biscoitos para funcionar corretamente, podemos guardar
-        eles no seu PC?
-        <Stack spacing={2} direction={"row"} style={{ marginTop: "1rem" }}>
-          <Button variant="outlined" color="error">
-            Não
-          </Button>
-          <Button variant="contained" color="success">
-            Claro!
-          </Button>
-        </Stack>
-      </div>
+      {(cookies === true || cookiesAlert === true) && (
+        <div
+          className={`flex flex-col justify-center items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
+        >
+          Esse site utiliza biscoitos para funcionar corretamente, podemos
+          guardar eles no seu PC?
+          <Stack spacing={2} direction={"row"} style={{ marginTop: "1rem" }}>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => setCookiesAlert(false)}
+            >
+              Não
+            </Button>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => setCookiesAlert(false)}
+            >
+              Claro!
+            </Button>
+          </Stack>
+        </div>
+      )}
     </>
   );
 }
