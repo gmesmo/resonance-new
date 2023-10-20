@@ -16,12 +16,27 @@ function LocalStorageHandler() {
 
       // Atualiza o estado com o valor encontrado no localStorage
       setCookies(cookiesValue);
+      if (cookiesValue) {
+        setCookiesAlert(false);
+      }
     }
   }, []);
 
+  function choiceHandler(e: boolean) {
+    const choice = e;
+    if (choice) {
+      setCookies(true);
+      setCookiesAlert(false);
+      localStorage.setItem("cookies", JSON.stringify(choice));
+    } else {
+      setCookies(false);
+      setCookiesAlert(false);
+    }
+  }
+
   return (
     <>
-      {(cookies === true || cookiesAlert === true) && (
+      {cookiesAlert === true && cookies == false && (
         <div
           className={`flex flex-col justify-center items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
         >
@@ -31,14 +46,14 @@ function LocalStorageHandler() {
             <Button
               variant="outlined"
               color="error"
-              onClick={() => setCookiesAlert(false)}
+              onClick={() => choiceHandler(false)}
             >
               Não
             </Button>
             <Button
               variant="contained"
               color="success"
-              onClick={() => setCookiesAlert(false)}
+              onClick={() => choiceHandler(true)}
             >
               Claro!
             </Button>
