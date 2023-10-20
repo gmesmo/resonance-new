@@ -20,22 +20,20 @@ function LocalStorageHandler() {
 
   return (
     <>
-      {cookies && (
-        <div
-          className={`flex flex-col justify-center items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
-        >
-          Esse site utiliza biscoitos para funcionar corretamente, podemos
-          guardar eles no seu PC?
-          <Stack spacing={2} direction={"row"} style={{ marginTop: "1rem" }}>
-            <Button variant="outlined" color="error">
-              Não
-            </Button>
-            <Button variant="contained" color="success">
-              Claro!
-            </Button>
-          </Stack>
-        </div>
-      )}
+      <div
+        className={`flex flex-col justify-center items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
+      >
+        Esse site utiliza biscoitos para funcionar corretamente, podemos guardar
+        eles no seu PC?
+        <Stack spacing={2} direction={"row"} style={{ marginTop: "1rem" }}>
+          <Button variant="outlined" color="error">
+            Não
+          </Button>
+          <Button variant="contained" color="success">
+            Claro!
+          </Button>
+        </Stack>
+      </div>
     </>
   );
 }
