@@ -14,13 +14,13 @@ export default function Menu() {
 
   return (
     <section
-      className={`absolute transition-all duration-500 flex flex-row justify-center md:w-1/4 w-menu h-menu m-3 p-3 rounded-lg text-white ${
-        styles.menu
-      } ${isMenuOpen ? `translate-x-0` : `-translate-x-menu`}`}
+      className={`absolute transition-all duration-500 flex flex-row justify-center md:w-1/4 
+                  w-menu h-menu m-3 p-3 rounded-lg text-white  
+                  glass ${isMenuOpen ? `translate-x-0` : `-translate-x-menu`}`}
     >
       <div
         className={`absolute transition-all duration-500 ${
-          isMenuOpen ? `right-3` : `-right-36`
+          isMenuOpen ? `right-3` : `md:-right-1/3 -right-32`
         }`}
       >
         <Fab onClick={handleIconClick} color="secondary">

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./assets/components/Home";
 import Teste from "./assets/components/Teste";
 import KeySequenceComponent from "./assets/components/theme/custom/KeySequence";
+import LocalStorageHandler from "./assets/components/localStorage/LocalStorageHandler";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/Teste" element={<Teste />} />
         </Routes>
       </Router>
+
+      <LocalStorageHandler />
     </div>
   );
 }

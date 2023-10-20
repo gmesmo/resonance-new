@@ -2,21 +2,33 @@ import { useState, useEffect } from "react";
 
 const KeySequenceComponent: React.FC = () => {
   const [keySequence, setKeySequence] = useState<string[]>([]);
-  const correctSequence = ["h", "a", "y", "a", "t", "a"];
+  const correctSequences: { [key: string]: string[] } = {
+    hayata: ["h", "a", "y", "a", "t", "a"],
+    judy: ["j", "u", "d", "y"],
+  };
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const newSequence = [...keySequence, event.key];
-      setKeySequence(newSequence);
 
-      if (newSequence.length >= correctSequence.length) {
-        setKeySequence([event.key]);
+      for (const theme in correctSequences) {
+        const correctSequence = correctSequences[theme];
+        const isCorrect = newSequence
+          .join("")
+          .endsWith(correctSequence.join(""));
+        if (isCorrect) {
+          // Sequência correta
+          document.documentElement.setAttribute("data-theme", theme);
+          setKeySequence([]);
+          return;
+        }
       }
 
-      if (newSequence.join("") === correctSequence.join("")) {
-        // Sequência correta
-        document.documentElement.setAttribute("data-theme", "hayata");
+      if (newSequence.length > 6) {
+        // Se a tecla pressionada não corresponder a nenhuma sequência válida
         setKeySequence([]);
+      } else {
+        setKeySequence(newSequence);
       }
     };
 
@@ -25,7 +37,7 @@ const KeySequenceComponent: React.FC = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [keySequence, correctSequence]);
+  }, [keySequence]);
 
   return <></>;
 };

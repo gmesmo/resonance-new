@@ -7,6 +7,7 @@ export default {
         content: "rgb(var(--color-content) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",
         bg: "rgb(var(--color-bg) / <alpha-value>)",
+        "bg-menu": "rgb(var(--bg-menu) / <alpha-value>)",
       },
       height: {
         menu: "calc(100dvh - 1.5rem)",
