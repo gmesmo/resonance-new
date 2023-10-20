@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function LocalStorageHandler() {
   const [cookies, setCookies] = useState(false);
-  const [cookiesAlert, setCookiesAlert] = useState(true);
+  const [cookiesAlert, setCookiesAlert] = useState(false);
 
   useEffect(() => {
     // Verifica se o localStorage é suportado pelo navegador
@@ -16,8 +16,8 @@ function LocalStorageHandler() {
 
       // Atualiza o estado com o valor encontrado no localStorage
       setCookies(cookiesValue);
-      if (cookiesValue) {
-        setCookiesAlert(false);
+      if (!cookiesValue) {
+        setCookiesAlert(true);
       }
     }
   }, []);

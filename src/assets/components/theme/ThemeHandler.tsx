@@ -27,6 +27,7 @@ export default function ThemeHandler() {
         direction={currentTheme === "light" ? "left" : "right"}
         in={currentTheme === "light"}
         style={{ position: "absolute" }}
+        timeout={450}
       >
         <LightModeRoundedIcon style={{ color: "yellow" }} />
       </Slide>
@@ -34,6 +35,7 @@ export default function ThemeHandler() {
         direction={currentTheme === "dark" ? "left" : "right"}
         in={currentTheme === "dark"}
         style={{ position: "absolute" }}
+        timeout={450}
       >
         <DarkModeRoundedIcon />
       </Slide>
