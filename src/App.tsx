@@ -19,7 +19,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/chapter/:id" element={<ChapterDisplay />} />
+          <Route
+            path="/chapter/:chapterId/page/:pageId"
+            element={<ChapterDisplay />}
+          />
+          <Route path="/chapter/:chapterId" element={<ChapterDisplay />} />
         </Routes>
 
         <LocalStorageHandler />

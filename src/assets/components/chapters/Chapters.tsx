@@ -41,11 +41,13 @@ function ChapterSelector() {
 }
 
 function ChapterDisplay() {
-  const { id } = useParams();
+  const { chapterId, pageId } = useParams();
 
   const chapter = chapters.find(
-    (chapter) => chapter.chapterNumber.toString() === id
+    (chapter) => chapter.chapterNumber.toString() === chapterId
   );
+
+  const currentPage = pageId ? pageId.toString() : "1";
 
   return (
     <Card className="bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg overflow-y-auto">
@@ -55,14 +57,18 @@ function ChapterDisplay() {
       <Divider variant="middle" sx={{ background: "lightgray" }} />
 
       {chapter?.pages?.map((page) => {
-        return (
-          <div
-            key={page.number}
-            className="text-content text-justify indent-10 text-lg w-11/12 mx-auto mt-10"
-          >
-            {textFormat({ text: page.text })}
-          </div>
-        );
+        if (page.number.toString() === currentPage) {
+          return (
+            <>
+              <div
+                key={page.number}
+                className="text-content text-justify indent-10 text-lg w-11/12 mx-auto mt-10"
+              >
+                {textFormat({ text: page.text })}
+              </div>
+            </>
+          );
+        }
       })}
     </Card>
   );
