@@ -25,7 +25,7 @@ export default function Menu() {
       >
         <Fab
           onClick={handleIconClick}
-          className="bg-accent text-content hover:bg-content hover:text-accent"
+          className="bg-accent text-white hover:bg-white hover:text-accent"
         >
           <Grow in={!isMenuOpen} style={{ position: "absolute" }}>
             <MenuRoundedIcon />

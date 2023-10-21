@@ -53,6 +53,7 @@ function LocalStorageHandler() {
             <Button
               variant="contained"
               color="success"
+              className="bg-[#1e7924]"
               onClick={() => choiceHandler(true)}
             >
               Claro!
