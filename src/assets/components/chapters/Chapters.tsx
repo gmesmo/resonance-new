@@ -2,6 +2,8 @@ import chapters from "./chapters.json";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
+import { Card } from "@mui/material";
+import Divider from "@mui/material/Divider";
 
 function ChapterSelector() {
   return (
@@ -37,7 +39,18 @@ function ChapterSelector() {
 function ChapterDisplay() {
   const { id } = useParams();
 
-  return <>{id}</>;
+  const chapter = chapters.find(
+    (chapter) => chapter.chapterNumber.toString() === id
+  );
+
+  return (
+    <Card className="bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
+      <h1 className="text-accent text-xl md:text-3xl text-center m-4">
+        {chapter ? chapter.title : "Capítulo não encontrado"}
+      </h1>
+      <Divider variant="middle" sx={{ background: "lightgray" }} />
+    </Card>
+  );
 }
 
 export { ChapterSelector, ChapterDisplay };

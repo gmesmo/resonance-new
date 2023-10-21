@@ -37,6 +37,36 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+:root[data-theme="light"] .background,
+:root[data-theme="judy"] .background {
+  background: #4ca1af; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+:root[data-theme="dark"] .background,
+:root[data-theme="hayata"] .background {
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .glass {
   /* From https://css.glass */
   background: rgba(0, 0, 0, 0.65);
@@ -47,7 +77,8 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-:root[data-theme="judy"] .glass {
+:root[data-theme="judy"] .glass,
+:root[data-theme="light"] .glass {
   /* From https://css.glass */
   background: rgba(0, 0, 0, 0.25);
   border-radius: 16px;

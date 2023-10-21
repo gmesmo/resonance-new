@@ -9,7 +9,11 @@ import { ChapterDisplay } from "./assets/components/chapters/Chapters";
 function App() {
   return (
     <Router>
-      <div className="flex flex-row justify- align-middle h-screen w-screen text-content bg-bg transition-all duration-500">
+      <div
+        className="flex flex-row align-middle h-screen w-screen 
+                  text-content bg-bg transition-all duration-500
+                  background"
+      >
         <Menu />
         <KeySequenceComponent />
 
