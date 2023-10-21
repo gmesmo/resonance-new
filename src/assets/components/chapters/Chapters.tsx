@@ -54,7 +54,7 @@ function ChapterDisplay() {
       </h1>
       <Divider variant="middle" sx={{ background: "lightgray" }} />
 
-      {chapter?.pages?.map((page, i) => {
+      {chapter?.pages?.map((page) => {
         return (
           <div
             key={page.number}
