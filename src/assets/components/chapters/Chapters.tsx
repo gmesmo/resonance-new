@@ -55,7 +55,7 @@ function ChapterDisplay() {
 
   const [pageNumber, setPageNumber] = useState(currentPage);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (value: number) => {
     setPageNumber(value); // Convert to a string for the URL
   };
 
