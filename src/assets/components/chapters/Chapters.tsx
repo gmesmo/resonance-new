@@ -2,7 +2,7 @@ import chapters from "./chapters.json";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
-import { Card, Pagination } from "@mui/material";
+import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
@@ -84,16 +84,23 @@ function ChapterDisplay() {
     };
   }, [pageNumber, chapter]);
 
+  useEffect(() => {
+    setPageNumber(1);
+  }, [chapterId]);
+
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
       <h1 className="text-accent text-xl md:text-3xl text-center m-4">
         {chapter ? chapter.title : "Capítulo não encontrado"}
       </h1>
-      <Divider variant="middle" sx={{ color: "lightgray" }}>
-        {chapter && format(new Date(chapter.releaseDate), "dd/MM/yyyy")}
+      <Divider variant="middle" className="before:bg-accent after:bg-accent">
+        <Chip
+          className="text-accent border-accent border-2 border-solid"
+          label={chapter && format(new Date(chapter.releaseDate), "dd/MM/yyyy")}
+        />
       </Divider>
 
-      <div className="overflow-y-auto m-4 h-5/6 p-3">
+      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20">
         {chapter?.pages?.map((page) => {
           if (page.number === pageNumber) {
             // Compare as numbers
@@ -110,15 +117,17 @@ function ChapterDisplay() {
         })}
       </div>
 
-      {chapter && chapter.pages && (
-        <Pagination
-          count={Math.ceil(chapter.pages.length / itemsPerPage)}
-          page={pageNumber}
-          onChange={handleChange}
-          className="absolute bottom-3 right-3"
-          sx={{ color: "white" }}
-        />
-      )}
+      <div className="w-full flex justify-end absolute bottom-0 bg-bg">
+        {chapter && chapter.pages && (
+          <Pagination
+            count={Math.ceil(chapter.pages.length / itemsPerPage)}
+            page={pageNumber}
+            onChange={handleChange}
+            className="mb-3 mr-3 md:mr-8"
+            sx={{ color: "white" }}
+          />
+        )}
+      </div>
     </Card>
   );
 }
