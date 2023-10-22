@@ -67,6 +67,16 @@ a {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+:root[data-theme="dark"] .MuiPagination-ul button.MuiButtonBase-root,
+:root[data-theme="hayata"] .MuiPagination-ul button.MuiButtonBase-root {
+  color: white;
+}
+
+.MuiDivider-root::before,
+.MuiDivider-root::after {
+  background-color: lightgray;
+}
+
 .glass {
   /* From https://css.glass */
   background: rgba(0, 0, 0, 0.65);
@@ -86,4 +96,8 @@ a {
   backdrop-filter: blur(6.5px);
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+p {
+  margin-top: 0.75rem;
 }

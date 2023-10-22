@@ -2,8 +2,10 @@ import chapters from "./chapters.json";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
-import { Card } from "@mui/material";
+import { Card, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
+import { useState, useEffect } from "react";
+import { format } from "date-fns";
 
 interface TextFormatProps {
   text: string;
@@ -43,33 +45,80 @@ function ChapterSelector() {
 function ChapterDisplay() {
   const { chapterId, pageId } = useParams();
 
+  const itemsPerPage = 1;
+
   const chapter = chapters.find(
     (chapter) => chapter.chapterNumber.toString() === chapterId
   );
 
-  const currentPage = pageId ? pageId.toString() : "1";
+  const currentPage = pageId ? parseInt(pageId, 10) : 1; // Convert to a number
+
+  const [pageNumber, setPageNumber] = useState(currentPage);
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPageNumber(value); // Convert to a string for the URL
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (chapter?.pages) {
+        if (event.key === "ArrowLeft") {
+          // Tecla de seta para a esquerda, vá para a página anterior
+          if (pageNumber > 1) {
+            setPageNumber(pageNumber - 1);
+          }
+        } else if (event.key === "ArrowRight") {
+          // Tecla de seta para a direita, vá para a próxima página
+          if (pageNumber < chapter.pages.length) {
+            setPageNumber(pageNumber + 1);
+          }
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      // Remova o event listener quando o componente for desmontado
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [pageNumber, chapter]);
 
   return (
-    <Card className="bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg overflow-y-auto">
+    <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
       <h1 className="text-accent text-xl md:text-3xl text-center m-4">
         {chapter ? chapter.title : "Capítulo não encontrado"}
       </h1>
-      <Divider variant="middle" sx={{ background: "lightgray" }} />
+      <Divider variant="middle" sx={{ color: "lightgray" }}>
+        {chapter && format(new Date(chapter.releaseDate), "dd/MM/yyyy")}
+      </Divider>
 
-      {chapter?.pages?.map((page) => {
-        if (page.number.toString() === currentPage) {
-          return (
-            <>
+      <div className="overflow-y-auto m-4 h-5/6 p-3">
+        {chapter?.pages?.map((page) => {
+          if (page.number === pageNumber) {
+            // Compare as numbers
+            return (
               <div
                 key={page.number}
-                className="text-content text-justify indent-10 text-lg w-11/12 mx-auto mt-10"
+                className="text-content text-justify indent-10 text-lg"
               >
                 {textFormat({ text: page.text })}
               </div>
-            </>
-          );
-        }
-      })}
+            );
+          }
+          return null;
+        })}
+      </div>
+
+      {chapter && chapter.pages && (
+        <Pagination
+          count={Math.ceil(chapter.pages.length / itemsPerPage)}
+          page={pageNumber}
+          onChange={handleChange}
+          className="absolute bottom-3 right-3"
+          sx={{ color: "white" }}
+        />
+      )}
     </Card>
   );
 }
