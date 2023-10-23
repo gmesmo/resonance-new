@@ -1,6 +1,7 @@
 import { Button, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 
+//Primeiro aviso de cookies (localStorage)
 function LocalStorageHandler() {
   const [cookies, setCookies] = useState(false);
   const [cookiesAlert, setCookiesAlert] = useState(false);
@@ -68,6 +69,7 @@ function LocalStorageHandler() {
   );
 }
 
+//Verifica se cookies estão habilitados (localStorage)
 function cookiesCheck() {
   const [cookies, setCookies] = useState(false);
 
@@ -88,6 +90,7 @@ function cookiesCheck() {
   return cookies;
 }
 
+//Salva escolha feita pelo usuário
 function saveChoice(id: string, choice: number) {
   const existingChoices = JSON.parse(localStorage.getItem("choices") || "{}");
 
@@ -100,6 +103,7 @@ function saveChoice(id: string, choice: number) {
   localStorage.setItem("choices", JSON.stringify(existingChoices));
 }
 
+//Procura se escolha foi feita pelo usuário e retorna ela em caso positivo
 function findChoice(id: string): string | null {
   const existingChoicesJSON = localStorage.getItem("choices");
 
