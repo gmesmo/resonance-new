@@ -2,7 +2,7 @@ import chapters from "./chapters.json";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
-import { Card, Chip, Pagination } from "@mui/material";
+import { ButtonGroup, Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
@@ -110,6 +110,18 @@ function ChapterDisplay() {
                 className="text-content text-justify indent-10 text-lg"
               >
                 {textFormat({ text: page.text })}
+
+                <ButtonGroup className="w-full flex justify-center mt-3">
+                  {page.options &&
+                    page.options[1].map((option, index) => (
+                      <Button
+                        key={index}
+                        className="option text-accent border-accent hover:border-accent hover:text-white hover:bg-accent rounded-lg"
+                      >
+                        {option.text}
+                      </Button>
+                    ))}
+                </ButtonGroup>
               </div>
             );
           }
