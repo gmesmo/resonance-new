@@ -7,6 +7,7 @@ import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { OptionHandler } from "./options/Options";
+import { scrollToTop } from "../theme/ThemeHandler";
 
 function ChapterSelector() {
   return (
@@ -59,6 +60,8 @@ function ChapterDisplay() {
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPageNumber(value); // Convert to a string for the URL
   };
+
+  () => scrollToTop();
 
   //Setas direcionais para mudar de página
   useEffect(() => {

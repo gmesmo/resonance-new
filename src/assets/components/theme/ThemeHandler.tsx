@@ -3,7 +3,7 @@ import { Fab, Slide } from "@mui/material";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 
-export default function ThemeHandler() {
+function ThemeHandler() {
   const [currentTheme, setCurrentTheme] = useState(
     document.documentElement.getAttribute("data-theme")
   );
@@ -43,3 +43,12 @@ export default function ThemeHandler() {
     </Fab>
   );
 }
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Comportamento suave para rolagem animada
+  });
+}
+
+export { ThemeHandler, scrollToTop };
