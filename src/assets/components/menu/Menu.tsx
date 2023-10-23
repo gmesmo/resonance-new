@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Fab, Grow } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import ThemeHandler from "../theme/ThemeHandler";
+import { ThemeHandler } from "../theme/ThemeHandler";
 import { ChapterSelector } from "../chapters/Chapters";
 
 export default function Menu() {
