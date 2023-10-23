@@ -117,16 +117,32 @@ function ChapterDisplay() {
         })}
       </div>
 
-      <div className="w-full flex justify-end absolute bottom-0 bg-bg">
-        {chapter && chapter.pages && (
+      <div className="w-full flex justify-end absolute bottom-0 bg-bg pb-3">
+        {chapter && chapter.pages && chapter.pages.length > 1 && (
           <Pagination
             count={Math.ceil(chapter.pages.length / itemsPerPage)}
             page={pageNumber}
             onChange={handleChange}
-            className="mb-3 mr-3 md:mr-8"
+            className="mr-3"
             sx={{ color: "white" }}
           />
         )}
+
+        {chapter &&
+          chapter.chapterNumber > -1 &&
+          chapter.chapterNumber < chapters.length - 1 &&
+          pageNumber > chapter.pages.length - 1 && (
+            <Stack>
+              <Link to={`/chapter/${chapter.chapterNumber + 1}`}>
+                <Button
+                  variant="outlined"
+                  className="bg-accent border-accent hover:border-accent text-white hover:text-accent rounded-lg mr-3"
+                >
+                  Próximo Capítulo
+                </Button>
+              </Link>
+            </Stack>
+          )}
       </div>
     </Card>
   );
