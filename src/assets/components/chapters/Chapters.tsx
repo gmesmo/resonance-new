@@ -6,7 +6,6 @@ import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
-import { cookiesCheck } from "../localStorage/LocalStorageHandler";
 import { OptionHandler } from "./options/Options";
 
 function ChapterSelector() {
@@ -46,7 +45,6 @@ function ChapterSelector() {
 
 function ChapterDisplay() {
   const { chapterId, pageId } = useParams();
-  const hasCookies = cookiesCheck();
 
   const itemsPerPage = 1;
 
