@@ -68,4 +68,47 @@ function LocalStorageHandler() {
   );
 }
 
-export default LocalStorageHandler;
+function cookiesCheck() {
+  const [cookies, setCookies] = useState(false);
+
+  useEffect(() => {
+    // Verifica se o localStorage é suportado pelo navegador
+    if (typeof window !== "undefined" && window.localStorage) {
+      // Recupera o valor do localStorage com a chave "cookies"
+      const storedCookies = localStorage.getItem("cookies");
+
+      // Converte o valor para um booleano
+      const cookiesValue = storedCookies === "true";
+
+      // Atualiza o estado com o valor encontrado no localStorage
+      setCookies(cookiesValue);
+    }
+  }, []);
+
+  return cookies;
+}
+
+function saveChoice(id: string, choice: number) {
+  const existingChoices = JSON.parse(localStorage.getItem("choices") || "{}");
+
+  if (!existingChoices[id]) {
+    existingChoices[id] = [];
+  }
+
+  existingChoices[id].push(choice);
+
+  localStorage.setItem("choices", JSON.stringify(existingChoices));
+}
+
+function findChoice(id: string): string | null {
+  const existingChoicesJSON = localStorage.getItem("choices");
+
+  if (existingChoicesJSON) {
+    const existingChoices = JSON.parse(existingChoicesJSON);
+    return existingChoices[id] || null;
+  }
+
+  return null;
+}
+
+export { LocalStorageHandler, cookiesCheck, saveChoice, findChoice };

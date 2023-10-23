@@ -7,21 +7,25 @@
     --color-bg: 255 255 255;
     --color-content: 0 0 0;
     --color-accent: 150 0 150;
+    --color-contrast: 0 0 0;
   }
   :root[data-theme="dark"] {
     --color-bg: 26 26 26;
     --color-content: 255 255 255;
+    --color-contrast: 255 255 255;
   }
   :root[data-theme="judy"] {
     --color-bg: 255 255 255;
     --bg-menu: 0 0 0;
     --color-content: 0 0 0;
     --color-accent: 0 78 194;
+    --color-contrast: 0 0 0;
   }
   :root[data-theme="hayata"] {
     --color-bg: 26 26 26;
     --color-content: 255 255 255;
     --color-accent: 255 0 0;
+    --color-contrast: 255 255 255;
   }
 }
 

@@ -3,7 +3,7 @@ import Menu from "./assets/components/menu/Menu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./assets/components/Home";
 import KeySequenceComponent from "./assets/components/theme/custom/KeySequence";
-import LocalStorageHandler from "./assets/components/localStorage/LocalStorageHandler";
+import { LocalStorageHandler } from "./assets/components/localStorage/LocalStorageHandler";
 import { ChapterDisplay } from "./assets/components/chapters/Chapters";
 
 function App() {

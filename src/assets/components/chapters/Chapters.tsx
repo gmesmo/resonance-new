@@ -2,14 +2,12 @@ import chapters from "./chapters.json";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
-import { ButtonGroup, Card, Chip, Pagination } from "@mui/material";
+import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
-
-interface TextFormatProps {
-  text: string;
-}
+import { cookiesCheck } from "../localStorage/LocalStorageHandler";
+import { OptionHandler } from "./options/Options";
 
 function ChapterSelector() {
   return (
@@ -26,7 +24,11 @@ function ChapterSelector() {
         </Link>
         {chapters.map((chapter, i) => {
           return (
-            <Link to={`/chapter/${chapter.chapterNumber}`} className="w-full">
+            <Link
+              key={`link_${i}`}
+              to={`/chapter/${chapter.chapterNumber}`}
+              className="w-full"
+            >
               <Button
                 key={i}
                 variant="outlined"
@@ -44,6 +46,7 @@ function ChapterSelector() {
 
 function ChapterDisplay() {
   const { chapterId, pageId } = useParams();
+  const hasCookies = cookiesCheck();
 
   const itemsPerPage = 1;
 
@@ -59,6 +62,7 @@ function ChapterDisplay() {
     setPageNumber(value); // Convert to a string for the URL
   };
 
+  //Setas direcionais para mudar de página
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (chapter?.pages) {
@@ -84,22 +88,25 @@ function ChapterDisplay() {
     };
   }, [pageNumber, chapter]);
 
+  //Handler para caso página não tenha sido passada definir a primeira
   useEffect(() => {
     setPageNumber(1);
   }, [chapterId]);
 
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
+      {/* Título */}
       <h1 className="text-accent text-xl md:text-3xl text-center m-4">
         {chapter ? chapter.title : "Capítulo não encontrado"}
       </h1>
+      {/* Divisor + Data de lançamento */}
       <Divider variant="middle" className="before:bg-accent after:bg-accent">
         <Chip
           className="text-accent border-accent border-2 border-solid"
           label={chapter && format(new Date(chapter.releaseDate), "dd/MM/yyyy")}
         />
       </Divider>
-
+      {/* Paginas */}
       <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20">
         {chapter?.pages?.map((page) => {
           if (page.number === pageNumber) {
@@ -109,26 +116,32 @@ function ChapterDisplay() {
                 key={page.number}
                 className="text-content text-justify indent-10 text-lg"
               >
-                {textFormat({ text: page.text })}
+                {/* {textFormat({ text: page.text })} */}
 
-                <ButtonGroup className="w-full flex justify-center mt-3">
-                  {page.options &&
-                    page.options[1].map((option, index) => (
-                      <Button
-                        key={index}
-                        className="option text-accent border-accent hover:border-accent hover:text-white hover:bg-accent rounded-lg"
-                      >
-                        {option.text}
-                      </Button>
-                    ))}
-                </ButtonGroup>
+                {/* {page.options &&
+                  (hasCookies ? (
+                    <ButtonGroup className="w-full flex justify-center mt-3">
+                      {page.options.map((option) => (
+                        <Button
+                          key={option.id}
+                          className="option text-contrast border-accent hover:border-accent hover:text-white hover:bg-accent rounded-lg"
+                        >
+                          {option.text}
+                        </Button>
+                      ))}
+                    </ButtonGroup>
+                  ) : (
+                    textFormat()
+                  ))} */}
+
+                <OptionHandler page={page} chapter={chapterId ?? null} />
               </div>
             );
           }
           return null;
         })}
       </div>
-
+      {/* Botões paginação */}
       <div className="w-full flex justify-end absolute bottom-0 bg-bg pb-3">
         {chapter && chapter.pages && chapter.pages.length > 1 && (
           <Pagination
@@ -139,7 +152,7 @@ function ChapterDisplay() {
             sx={{ color: "white" }}
           />
         )}
-
+        {/* Botão próximo cap */}
         {chapter &&
           chapter.chapterNumber > -1 &&
           chapter.chapterNumber < chapters.length - 1 &&
@@ -158,11 +171,6 @@ function ChapterDisplay() {
       </div>
     </Card>
   );
-}
-
-function textFormat(props: TextFormatProps) {
-  const text = props.text;
-  return text.split("\n").map((str: string) => <p>{str}</p>);
 }
 
 export { ChapterSelector, ChapterDisplay };

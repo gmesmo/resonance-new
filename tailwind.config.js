@@ -8,6 +8,7 @@ export default {
         accent: "rgb(var(--color-accent) / <alpha-value>)",
         bg: "rgb(var(--color-bg) / <alpha-value>)",
         "bg-menu": "rgb(var(--bg-menu) / <alpha-value>)",
+        contrast: "rgb(var(--color-contrast) / <alpha-value>)",
       },
       height: {
         menu: "calc(100dvh - 1.5rem)",

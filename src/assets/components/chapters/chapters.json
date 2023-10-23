@@ -18,18 +18,19 @@
       {
         "number": 1,
         "text": "Nunca entendi as pessoas ao meu redor, meus amigos, amigas… conhecidos, professores, meus pais ou qualquer outro. Todos têm suas vidas, eles choram e riem, brincam e brigam, lutam por o que querem, mas no fim, o que são eles? Quero dizer, bem no fundo, quem são eles? Todos temos segredos, certo? Quais seriam os segredos destas pessoas que me rodeiam? Todos os meus dias começam com uma dessas perguntas, dentre muitas outras, já inclusive me perguntei o por quê de me perguntar isso. Será que alguém, ou algo, me faz ter essas perguntas, por puro capricho? Para que ele mesmo se divirta, me olhando ponderar sobre coisas tão… sem sentido? Se for esse o caso, só vou saber caso ele queira, e só me resta esperar que isto ocorra.\nLogo depois de acordar fui até o banheiro, me encarando no espelho para não ter surpresa alguma, a mesma garota de dezessete anos me encarava do outro lado, pele clara demais como se não gostasse de sol, cabelos castanho escuros e olhos de tom ainda mais profundos, cansados. Suspirei e então lavei o rosto e penteei meus cabelos, descendo então as escadas em direção a cozinha, meus pais já tinham saído como sempre. Eu raramente podia ver eles em casa, ambos trabalhavam muito com a justificativa de se importar comigo, e por isso me deixavam sozinha. Ao menos sempre havia um bilhete na geladeira com a mensagem de um deles, dizendo algo como \"Boa aula hoje querida, continue se esforçando, te amamos\", mas faz muito tempo que essas mensagens já não tinham significado para mim.\nPreparei meu café da manhã, uma xícara de café com leite e um sanduíche, e comi calmamente ",
-        "options": {
-          "1": [
-            {
-              "text": "Ligar a TV",
-              "reaction": "enquanto assistia à TV, que passava um lembrete do \"aniversário\" da tragédia que abalou a maior potência mundial, o ataque aos prédios mais altos do planeta, até aquele momento. Não foi dada muitas informações, apenas o número de mortos e a enorme tristeza e choque que isso causou. Fiquei pensando sobre todo esse horror, por mais tempo que deveria pois quando notei já tinha passado da hora de ir para a escola, saí correndo sem nem mesmo desligar a televisão ou qualquer outra coisa.\nChegando na escola corri rapidamente para minha sala, o professor havia acabado de começar a chamada, estava no \"A\", respirei fundo tentando acalmar minha respiração e fui na direção do lugar vago e me sentei, constrangida pelo atraso, e arrumei meu material na mesa. Logo após a chamada o professor comentou sobre o evento que estava acontecendo em todas as escolas da rede, as eleições para presidentes de classe e logo depois para representantes estudantis da escola. Infelizmente eu estava participando disso, pois quando foi anunciado o evento muitas amigas minhas me fizeram entrar nessa, acho que no fim eu deveria ter recusado não importasse a pressão. Porém, já que eu tinha cedido, decidi me esforçar."
-            },
-            {
-              "text": "Comer em silêncio",
-              "reaction": "em silêncio, após um tempo levantei e fui para aula com calma.\nCheguei na escola e me dirigi a minha sala, o professor não havia chegado então me sentei e aguardei, eventualmente o professor fez a chamada. Logo após isso ele comentou sobre o evento que estava acontecendo em todas as escolas da rede, as eleições para presidentes de classe e logo depois para representantes estudantis da escola. Infelizmente eu estava participando disso, pois quando foi anunciado o evento muitas amigas minhas me fizeram entrar nessa, acho que no fim eu deveria ter recusado não importasse a pressão. Porém, já que eu tinha cedido, decidi me esforçar."
-            }
-          ]
-        }
+        "options": [
+          {
+            "id": 1,
+            "text": "Ligar a TV",
+            "reaction": "enquanto assistia à TV, que passava um lembrete do \"aniversário\" da tragédia que abalou a maior potência mundial, o ataque aos prédios mais altos do planeta, até aquele momento. Não foi dada muitas informações, apenas o número de mortos e a enorme tristeza e choque que isso causou. Fiquei pensando sobre todo esse horror, por mais tempo que deveria pois quando notei já tinha passado da hora de ir para a escola, saí correndo sem nem mesmo desligar a televisão ou qualquer outra coisa.\nChegando na escola corri rapidamente para minha sala, o professor havia acabado de começar a chamada, estava no \"A\", respirei fundo tentando acalmar minha respiração e fui na direção do lugar vago e me sentei, constrangida pelo atraso, e arrumei meu material na mesa. Logo após a chamada o professor comentou sobre o evento que estava acontecendo em todas as escolas da rede, as eleições para presidentes de classe e logo depois para representantes estudantis da escola. Infelizmente eu estava participando disso, pois quando foi anunciado o evento muitas amigas minhas me fizeram entrar nessa, acho que no fim eu deveria ter recusado não importasse a pressão. Porém, já que eu tinha cedido, decidi me esforçar.",
+            "default": true
+          },
+          {
+            "id": 2,
+            "text": "Comer em silêncio",
+            "reaction": "em silêncio, após um tempo levantei e fui para aula com calma.\nCheguei na escola e me dirigi a minha sala, o professor não havia chegado então me sentei e aguardei, eventualmente o professor fez a chamada. Logo após isso ele comentou sobre o evento que estava acontecendo em todas as escolas da rede, as eleições para presidentes de classe e logo depois para representantes estudantis da escola. Infelizmente eu estava participando disso, pois quando foi anunciado o evento muitas amigas minhas me fizeram entrar nessa, acho que no fim eu deveria ter recusado não importasse a pressão. Porém, já que eu tinha cedido, decidi me esforçar."
+          }
+        ]
       },
       {
         "number": 2,
@@ -60,7 +61,20 @@
       },
       {
         "number": 3,
-        "text": "Fiquei deitado na minha cama por alguns segundos, tentando lembrar dos acontecimentos do dia, fechei os olhos tentando rever tudo que havia visto mais cedo. Mas havia algo nas lembranças de estranho, o tal véu roxo não estava sobre a garota, de fato eu mal podia me recordar de falar com ela, quero dizer… qual era seu nome? \nA pergunta sumiu da minha mente ao ouvir o som de plantão noticiário na TV que tinha deixado ligada para fazer companhia. Me virei para ela e a repórter falava sobre um sequestro de avião que tinha levado à incontáveis mortes. Boa maneira de dormir, pensei, com uma notícia dessas.... \nMe levantei, passando a mão na barriga de leve encarando a TV. \n- Acho que vou buscar algo para comer então - Fui até a pequena cozinha, nada na geladeira, nada nos armários. Não havia sequer uma lata de salsichas em conserva - Qual é, eu juro que tinha comprado mais comida… \nColoquei meu tênis e fui para a loja mais próxima dali, era uma pequena conveniência perto da escola, o céu ainda estava alaranjado e o movimento na rua era pouco. Entrei na loja e fui direto para a parte onde tinha comida instantânea, peguei um pacote de miojo, o primeiro que vi e fui ao caixa. Lá estava ela, a garota de antes, minha colega. \n- Uh.. Oi, é… quanto custa? - Perguntei mostrando o miojo. \n- Uhm? Ah, É quatro com vinte e dois - Ela sorriu - Você é o… Will, não? \n- Isso - Entreguei o valor para ela - E você é a… \n- Shimeri - Ela respondeu, pegando o troco, foi quando eu pude notar que a tatuagem no pulso dela não estava mais lá, teria sido impressão minha? Não… não pode ter sido - Algo mais? \nHavia se passado um tempo considerável desde que entreguei o dinheiro, o silêncio estranho ia aumentando. \n- Não não, era isso, obrigado - Sorri, pegando o pacote e saindo da loja."
+        "text": "Fiquei deitado na minha cama por alguns segundos, tentando lembrar dos acontecimentos do dia, fechei os olhos tentando rever tudo que havia visto mais cedo. Mas havia algo nas lembranças de estranho, o tal véu roxo não estava sobre a garota, de fato eu mal podia me recordar de falar com ela, quero dizer… qual era seu nome? \nA pergunta sumiu da minha mente ao ouvir o som de plantão noticiário na TV que tinha deixado ligada para fazer companhia. Me virei para ela e a repórter falava sobre um sequestro de avião que tinha levado à incontáveis mortes. Boa maneira de dormir, pensei, com uma notícia dessas.... \nMe levantei, passando a mão na barriga de leve encarando a TV. \n- Acho que vou buscar algo para comer então - Fui até a pequena cozinha, nada na geladeira, nada nos armários. Não havia sequer uma lata de salsichas em conserva - Qual é, eu juro que tinha comprado mais comida… \nColoquei meu tênis e fui para a loja mais próxima dali, era uma pequena conveniência perto da escola, o céu ainda estava alaranjado e o movimento na rua era pouco. Entrei na loja e fui direto para a parte onde tinha comida instantânea, peguei um pacote de miojo, ",
+        "options": [
+          {
+            "id": 1,
+            "text": "Frango temperado",
+            "reaction": "de frango temperado. Me encaminhei ao caixa e para minha surpresa lá estava ela, minha colega. \n- Com licença, é… quanto custa? - Perguntei mostrando o miojo. \n- Uhm? Ah, É três e noventa e nove - Ela sorriu - Você é o… Will, não? \n- Isso - Entreguei o valor para ela - E você é a… \n- Shimeri - Ela respondeu, pegando o troco, foi quando eu pude notar que a tatuagem no pulso dela não estava mais lá, teria sido impressão minha? Não… não pode ter sido - Algo mais? \nHavia se passado um tempo considerável desde que entreguei o dinheiro, o silêncio estranho ia aumentando. \n- Não não, era isso, obrigado - Sorri, pegando o pacote e saindo da loja."
+          },
+          {
+            "id": 2,
+            "text": "Qualquer um",
+            "reaction": "o primeiro que vi e fui ao caixa. Lá estava ela, a garota de antes, minha colega. \n- Uh.. Oi, é… quanto custa? - Perguntei mostrando o miojo. \n- Uhm? Ah, É quatro com vinte e dois - Ela sorriu - Você é o… Will, não? \n- Isso - Entreguei o valor para ela - E você é a… \n- Shimeri - Ela respondeu, pegando o troco, foi quando eu pude notar que a tatuagem no pulso dela não estava mais lá, teria sido impressão minha? Não… não pode ter sido - Algo mais? \nHavia se passado um tempo considerável desde que entreguei o dinheiro, o silêncio estranho ia aumentando. \n- Não não, era isso, obrigado - Sorri, pegando o pacote e saindo da loja.",
+            "default": true
+          }
+        ]
       },
       {
         "number": 4,
