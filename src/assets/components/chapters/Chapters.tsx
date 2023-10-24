@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
 import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
+import Tooltip from "@mui/material/Tooltip";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { OptionHandler } from "./options/Options";
@@ -97,15 +98,33 @@ function ChapterDisplay() {
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
       {/* Título */}
-      <h1 className="text-accent text-xl md:text-3xl text-center m-4">
-        {chapter ? chapter.title : "Capítulo não encontrado"}
+      <h1 className={`text-accent text-xl md:text-3xl text-center m-4`}>
+        {chapter &&
+          (!chapter.extra
+            ? `Capítulo ${
+                chapter && `${chapter.chapterNumber} - ${chapter.title}`
+              }`
+            : `${chapter.title}`)}
       </h1>
       {/* Divisor + Data de lançamento */}
-      <Divider variant="middle" className="before:bg-accent after:bg-accent">
-        <Chip
-          className="text-accent border-accent border-2 border-solid"
-          label={chapter && format(new Date(chapter.releaseDate), "dd/MM/yyyy")}
-        />
+      <Divider
+        variant="middle"
+        className={`before:bg-accent after:bg-accent ${
+          isNewChapter(new Date(chapter!.releaseDate!)) &&
+          `before:bg-orange-500 after:bg-orange-500`
+        }`}
+      >
+        <Tooltip title="Novo capítulo">
+          <Chip
+            className={`text-accent border-accent border-2 border-solid ${
+              isNewChapter(new Date(chapter!.releaseDate!)) &&
+              `border-orange-500 text-orange-500 font-bold`
+            }`}
+            label={
+              chapter && format(new Date(chapter.releaseDate!), "dd/MM/yyyy")
+            }
+          />
+        </Tooltip>
       </Divider>
       {/* Paginas */}
       <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20">
@@ -117,24 +136,6 @@ function ChapterDisplay() {
                 key={page.number}
                 className="text-content text-justify indent-10 text-lg"
               >
-                {/* {textFormat({ text: page.text })} */}
-
-                {/* {page.options &&
-                  (hasCookies ? (
-                    <ButtonGroup className="w-full flex justify-center mt-3">
-                      {page.options.map((option) => (
-                        <Button
-                          key={option.id}
-                          className="option text-contrast border-accent hover:border-accent hover:text-white hover:bg-accent rounded-lg"
-                        >
-                          {option.text}
-                        </Button>
-                      ))}
-                    </ButtonGroup>
-                  ) : (
-                    textFormat()
-                  ))} */}
-
                 <OptionHandler page={page} chapter={chapterId ?? null} />
               </div>
             );
@@ -157,7 +158,7 @@ function ChapterDisplay() {
         {chapter &&
           chapter.chapterNumber > -1 &&
           chapter.chapterNumber < chapters.length - 1 &&
-          pageNumber > chapter.pages.length - 1 && (
+          pageNumber > chapter.pages!.length - 1 && (
             <Stack>
               <Link to={`/chapter/${chapter.chapterNumber + 1}`}>
                 <Button
@@ -172,6 +173,18 @@ function ChapterDisplay() {
       </div>
     </Card>
   );
+}
+
+function isNewChapter(date: Date) {
+  const currentDate = new Date();
+  const sevendays = new Date(currentDate);
+  sevendays.setDate(currentDate.getDate() - 7);
+
+  if (date >= sevendays) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export { ChapterSelector, ChapterDisplay };

@@ -3,6 +3,7 @@
     "chapterNumber": 0,
     "title": "Prólogo - Ai",
     "releaseDate": "2023-10-19",
+    "extra": true,
     "pages": [
       {
         "number": 1,
@@ -12,7 +13,7 @@
   },
   {
     "chapterNumber": 1,
-    "title": "Capítulo 1 - Shimeri",
+    "title": "Shimeri",
     "releaseDate": "2023-10-20",
     "pages": [
       {
@@ -48,7 +49,7 @@
   },
   {
     "chapterNumber": 2,
-    "title": "Capítulo 2: William",
+    "title": "William",
     "releaseDate": "2023-10-19",
     "pages": [
       {
@@ -79,6 +80,17 @@
       {
         "number": 4,
         "text": "No caminho de volta a noite estava praticamente presente, poucas faixas laranjas de sol pintavam o céu, por não estar completamente noite poucas das luzes da rua estavam ligadas o que fez eu perceber que outra pessoa vinha em minha direção pouco antes de esbarrar nela. Parecia um homem, bêbado, dei espaço para ele passar, porém ele pareceu nem ter notado minha presença. \"Estranho\" pensei, algo nele não parecia certo, além do fato de estar claramente embriagado tão cedo. Bom… ele já foi, continuei seguindo o caminho para casa, estava do outro lado da rua, as luzes do apartamento ao lado estavam acesas, incomum. \nQuando estava no meio da travessia escutei um som, ao longe, uma buzina de caminhão e pude ver a luz se aproximando. Não era possível, eu olhei para os dois lados, tinha certeza que não tinha nada na rua, de qualquer forma era tarde demais, fechei os olhos e esperei o fatídico fim me encolhendo de costas para o caminhão. \nPude apenas ouvir o estrondo porém nada havia me atingido, um calor estranho me cobria, ao abrir meus olhos pude ver destroços de ambos os lados, óleo no chão e a minha direita o que pude deduzir ser o motor do caminhão. Encarei por uns instantes o cenário caótico até que decidi sair dos escombros, não havia um arranhão em mim embora o caminhão tivesse me atingido em cheio, era perceptível o local do impacto embora não desse para dizer o que o caminhão tinha atingido. Eu não saberia dizer ao menos, se não tivesse presenciado tudo, de perto. \nFui até o lado do caminhão checar o motorista, ainda tinha sinais vitais. Peguei meu celular, porém ele estava estilhaçado, óbvio. Fui ao orelhão mais próximo e liguei para emergência. \n- Alô é do hospital? \n- Sim, qual sua emergência? - A mulher prontamente perguntou \n- Houve um… acidente, com um caminhão, o motorista está desacordado - Logo depois disso passei meu endereço e desliguei o telefone. \nNesse momento pude ouvir ao longe, um estrondo levemente agudo ecoando, parecia um… tiro? \nA ambulância havia chegado, me tirando do susto do disparo. Um médico se aproximou rapidamente de mim enquanto outros dois foram na direção do caminhão, socorrendo o motorista. O médico fez eu olhar para uma pequena lanterna, verificando minha reação. \n- O que..? - Ele mexeu na lanterna, testando novamente meu olho - Pensei ter visto algo. \n- Está tudo bem? - Eu olhava para a luz com desconforto \n- Sim sim, fique por aqui ok? Se sentir qualquer coisa errada, chame - Ele foi indo na direção do caminhão, ainda olhando algumas vezes para mim."
+      }
+    ]
+  },
+  {
+    "chapterNumber": 3,
+    "title": "A luz no fim do túnel",
+    "releaseDate": "2023-10-24",
+    "pages": [
+      {
+        "number": 1,
+        "text": ""
       }
     ]
   }
