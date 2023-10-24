@@ -32,11 +32,15 @@ function ThemeHandler() {
         overflow: "hidden",
         backgroundColor: currentTheme === "dark" ? "#1a1a1a" : "",
       }}
-      className={currentTheme === "light" ? `bg-[#1565c0]` : `bg-[#1a1a1a]`}
+      className={
+        currentTheme === "light" || currentTheme === "judy"
+          ? `bg-[#1565c0]`
+          : `bg-[#1a1a1a]`
+      }
     >
       <Slide
         direction={currentTheme === "light" ? "left" : "right"}
-        in={currentTheme === "light"}
+        in={currentTheme === "light" || currentTheme === "judy"}
         style={{ position: "absolute" }}
         timeout={450}
       >
@@ -44,7 +48,7 @@ function ThemeHandler() {
       </Slide>
       <Slide
         direction={currentTheme === "dark" ? "left" : "right"}
-        in={currentTheme === "dark"}
+        in={currentTheme === "dark" || currentTheme === "hayata"}
         style={{ position: "absolute" }}
         timeout={450}
       >

@@ -125,6 +125,11 @@ function findStoredTheme() {
   return existingThemeJSON || null;
 }
 
+function lastRead(lastChapter: string, lastPage: string) {
+  localStorage.setItem("Last chapter", lastChapter);
+  localStorage.setItem("Last page", lastPage);
+}
+
 export {
   LocalStorageHandler,
   cookiesCheck,
@@ -132,4 +137,5 @@ export {
   findChoice,
   saveTheme,
   findStoredTheme,
+  lastRead,
 };

@@ -102,12 +102,12 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-button.MuiButtonBase-root.Mui-selected {
+.MuiPagination-ul button.MuiButtonBase-root.Mui-selected {
   background-color: rgb(var(--color-accent));
   color: white;
 }
 
-button.MuiButtonBase-root.Mui-selected:hover {
+.MuiPagination-ul button.MuiButtonBase-root.Mui-selected:hover {
   color: black;
 }
 

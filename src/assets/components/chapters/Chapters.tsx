@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
+import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
 
 function ChapterSelector() {
   return (
@@ -62,6 +63,8 @@ function ChapterDisplay() {
     setPageNumber(value); // Convert to a string for the URL
   };
 
+  const cookiesEnabled = cookiesCheck();
+
   () => scrollToTop();
 
   //Setas direcionais para mudar de página
@@ -92,8 +95,16 @@ function ChapterDisplay() {
 
   //Handler para caso página não tenha sido passada definir a primeira
   useEffect(() => {
-    setPageNumber(1);
-  }, [chapterId]);
+    if (!pageId) {
+      setPageNumber(1);
+    }
+  }, [pageId]);
+
+  useEffect(() => {
+    if (cookiesEnabled && chapterId && pageId) {
+      lastRead(chapterId.toString(), currentPage.toString());
+    }
+  }, [currentPage]);
 
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
