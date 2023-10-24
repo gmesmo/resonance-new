@@ -109,7 +109,7 @@ function ChapterDisplay() {
       {/* Divisor + Data de lançamento */}
       <DividerDisplay date={new Date(chapter!.releaseDate!)} />
       {/* Paginas */}
-      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20">
+      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-16 md:pb-10">
         {chapter?.pages?.map((page) => {
           if (page.number === pageNumber) {
             // Compare as numbers
@@ -132,7 +132,7 @@ function ChapterDisplay() {
             count={Math.ceil(chapter.pages.length / itemsPerPage)}
             page={pageNumber}
             siblingCount={1} // Define o número de itens adjacentes à página atual (0 não exibe nenhum número além do selecionado)
-            boundaryCount={0}
+            boundaryCount={1}
             onChange={handleChange}
             className="mr-3"
             sx={{ color: "white" }}

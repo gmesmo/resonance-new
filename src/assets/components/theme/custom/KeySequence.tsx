@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { saveTheme } from "../../localStorage/LocalStorageHandler";
 
 const KeySequenceComponent: React.FC = () => {
   const [keySequence, setKeySequence] = useState<string[]>([]);
@@ -19,6 +20,7 @@ const KeySequenceComponent: React.FC = () => {
         if (isCorrect) {
           // Sequência correta
           document.documentElement.setAttribute("data-theme", theme);
+          saveTheme(theme);
           setKeySequence([]);
           return;
         }

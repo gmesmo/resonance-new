@@ -14,11 +14,7 @@ function setThemeBasedOnSystemPreference() {
   ).matches;
 
   if (storedTheme) {
-    if (storedTheme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
+    document.documentElement.setAttribute("data-theme", storedTheme);
   } else {
     if (prefersDarkMode) {
       document.documentElement.setAttribute("data-theme", "dark");
