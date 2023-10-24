@@ -115,4 +115,21 @@ function findChoice(id: string): string | null {
   return null;
 }
 
-export { LocalStorageHandler, cookiesCheck, saveChoice, findChoice };
+function saveTheme(theme: string) {
+  localStorage.setItem("theme", theme);
+}
+
+function findStoredTheme() {
+  const existingThemeJSON = localStorage.getItem("theme");
+
+  return existingThemeJSON || null;
+}
+
+export {
+  LocalStorageHandler,
+  cookiesCheck,
+  saveChoice,
+  findChoice,
+  saveTheme,
+  findStoredTheme,
+};

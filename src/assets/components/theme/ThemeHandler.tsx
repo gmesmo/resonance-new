@@ -2,16 +2,26 @@ import { useState } from "react";
 import { Fab, Slide } from "@mui/material";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
+import {
+  cookiesCheck,
+  findStoredTheme,
+  saveTheme,
+} from "../localStorage/LocalStorageHandler";
 
 function ThemeHandler() {
   const [currentTheme, setCurrentTheme] = useState(
-    document.documentElement.getAttribute("data-theme")
+    findStoredTheme || document.documentElement.getAttribute("data-theme")
   );
+
+  const cookiesEnabled = cookiesCheck();
 
   function toggleTheme() {
     const newTheme = currentTheme === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", newTheme);
     setCurrentTheme(newTheme);
+    if (cookiesEnabled) {
+      saveTheme(newTheme);
+    }
   }
 
   return (

@@ -107,25 +107,7 @@ function ChapterDisplay() {
             : `${chapter.title}`)}
       </h1>
       {/* Divisor + Data de lançamento */}
-      <Divider
-        variant="middle"
-        className={`before:bg-accent after:bg-accent ${
-          isNewChapter(new Date(chapter!.releaseDate!)) &&
-          `before:bg-orange-500 after:bg-orange-500`
-        }`}
-      >
-        <Tooltip title="Novo capítulo">
-          <Chip
-            className={`text-accent border-accent border-2 border-solid ${
-              isNewChapter(new Date(chapter!.releaseDate!)) &&
-              `border-orange-500 text-orange-500 font-bold`
-            }`}
-            label={
-              chapter && format(new Date(chapter.releaseDate!), "dd/MM/yyyy")
-            }
-          />
-        </Tooltip>
-      </Divider>
+      <DividerDisplay date={new Date(chapter!.releaseDate!)} />
       {/* Paginas */}
       <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20">
         {chapter?.pages?.map((page) => {
@@ -144,14 +126,17 @@ function ChapterDisplay() {
         })}
       </div>
       {/* Botões paginação */}
-      <div className="w-full flex justify-end absolute bottom-0 bg-bg pb-3">
+      <div className="w-full flex justify-end absolute bottom-0 bg-bg py-2">
         {chapter && chapter.pages && chapter.pages.length > 1 && (
           <Pagination
             count={Math.ceil(chapter.pages.length / itemsPerPage)}
             page={pageNumber}
+            siblingCount={1} // Define o número de itens adjacentes à página atual (0 não exibe nenhum número além do selecionado)
+            boundaryCount={0}
             onChange={handleChange}
             className="mr-3"
             sx={{ color: "white" }}
+            variant="outlined"
           />
         )}
         {/* Botão próximo cap */}
@@ -184,6 +169,35 @@ function isNewChapter(date: Date) {
     return true;
   } else {
     return false;
+  }
+}
+
+function DividerDisplay({ date }: { date: Date }) {
+  if (isNewChapter(date)) {
+    return (
+      <Divider
+        variant="middle"
+        className={`before:bg-orange-500 after:bg-orange-500`}
+      >
+        <Tooltip title="Novo capítulo" arrow={true}>
+          <Chip
+            className={`border-orange-500 text-orange-500 border-2 border-solid 
+            font-bold`}
+            label={format(date, "dd/MM/yyyy")}
+          />
+        </Tooltip>
+      </Divider>
+    );
+  } else {
+    return (
+      <Divider variant="middle" className={`before:bg-accent after:bg-accent`}>
+        <Chip
+          className={`border-accent text-accent border-2 border-solid 
+            font-bold`}
+          label={format(date, "dd/MM/yyyy")}
+        />
+      </Divider>
+    );
   }
 }
 
