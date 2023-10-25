@@ -28,7 +28,7 @@ function ChapterSelector() {
           return (
             <Link
               key={`link_${i}`}
-              to={`/chapter/${chapter.chapterNumber}`}
+              to={`/chapter/${chapter.chapterNumber}/page/1`}
               className="w-full"
             >
               <Button
@@ -58,14 +58,13 @@ function ChapterDisplay() {
   const currentPage = pageId ? parseInt(pageId, 10) : 1; // Convert to a number
 
   const [pageNumber, setPageNumber] = useState(currentPage);
+  const [currentChapter, setCurrentChapter] = useState(chapterId);
 
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPageNumber(value); // Convert to a string for the URL
   };
 
   const cookiesEnabled = cookiesCheck();
-
-  () => scrollToTop();
 
   //Setas direcionais para mudar de página
   useEffect(() => {
@@ -93,17 +92,17 @@ function ChapterDisplay() {
     };
   }, [pageNumber, chapter]);
 
-  //Handler para caso página não tenha sido passada definir a primeira
+  //Handler para definir primeira página
   useEffect(() => {
-    if (!pageId) {
-      setPageNumber(1);
-    }
-  }, [pageId]);
+    setPageNumber(1);
+  }, [currentChapter, chapterId]);
 
+  //Handler para salvar último capítulo e página lidos
   useEffect(() => {
     if (cookiesEnabled && chapterId && pageId) {
-      lastRead(chapterId.toString(), currentPage.toString());
+      lastRead(currentChapter!.toString(), currentPage.toString());
     }
+    () => scrollToTop();
   }, [currentPage]);
 
   return (
@@ -120,7 +119,7 @@ function ChapterDisplay() {
       {/* Divisor + Data de lançamento */}
       <DividerDisplay date={new Date(chapter!.releaseDate!)} />
       {/* Paginas */}
-      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-16 md:pb-10">
+      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20 md:pb-16">
         {chapter?.pages?.map((page) => {
           if (page.number === pageNumber) {
             // Compare as numbers
@@ -156,7 +155,12 @@ function ChapterDisplay() {
           chapter.chapterNumber < chapters.length - 1 &&
           pageNumber > chapter.pages!.length - 1 && (
             <Stack>
-              <Link to={`/chapter/${chapter.chapterNumber + 1}`}>
+              <Link
+                to={`/chapter/${chapter.chapterNumber + 1}`}
+                onClick={() =>
+                  setCurrentChapter(`${chapter.chapterNumber + 1}`)
+                }
+              >
                 <Button
                   variant="outlined"
                   className="bg-accent border-accent hover:border-accent text-white hover:text-accent rounded-lg mr-3"
