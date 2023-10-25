@@ -170,7 +170,7 @@ function getStoredTheme() {
 
 function lastRead(lastChapter: string, lastPage: string) {
   const existingChapter = localStorage.getItem("Last Chapter");
-  const existingPage = localStorage.getItem("LastPage");
+  const existingPage = localStorage.getItem("Last Page");
 
   if (existingChapter && existingPage) {
     if (

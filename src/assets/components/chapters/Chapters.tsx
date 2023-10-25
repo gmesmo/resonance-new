@@ -62,10 +62,6 @@ function ChapterDisplay() {
     chapter?.chapterNumber || chapterId
   );
 
-  // useEffect(() => {
-  //   alert(currentPage);
-  // });
-
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPageNumber(value); // Convert to a string for the URL
   };
@@ -101,14 +97,21 @@ function ChapterDisplay() {
   //Handler para definir primeira página
   useEffect(() => {
     setPageNumber(1);
-  }, [currentChapter, chapterId]);
+  }, [chapterId]);
+
+  function NextChapter(next: number) {
+    setCurrentChapter(`${next}`);
+    setPageNumber(1);
+  }
 
   //Handler para salvar último capítulo e página lidos
   useEffect(() => {
-    if (cookiesEnabled && currentChapter && pageNumber) {
-      lastRead(currentChapter!.toString(), pageNumber.toString());
+    if (cookiesEnabled) {
+      if (chapter?.chapterNumber && pageNumber) {
+        lastRead(chapter.chapterNumber.toString(), pageNumber.toString());
+      }
     }
-  }, [currentChapter, pageNumber]);
+  }, [currentChapter, pageNumber, currentPage]);
 
   useEffect(() => {
     () => scrollToTop();
@@ -130,7 +133,7 @@ function ChapterDisplay() {
       {/* Paginas */}
       <div className="overflow-y-auto m-4 h-5/6 p-3 pb-24 md:pb-20">
         {chapter?.pages?.map((page) => {
-          if (page.number === currentPage) {
+          if (page.number === pageNumber) {
             // Compare as numbers
             return (
               <div
@@ -166,9 +169,7 @@ function ChapterDisplay() {
             <Stack>
               <Link
                 to={`/chapter/${chapter.chapterNumber + 1}`}
-                onClick={() =>
-                  setCurrentChapter(`${chapter.chapterNumber + 1}`)
-                }
+                onClick={() => NextChapter(chapter.chapterNumber + 1)}
               >
                 <Button
                   variant="outlined"
