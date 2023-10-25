@@ -119,7 +119,7 @@ function ChapterDisplay() {
       {/* Divisor + Data de lançamento */}
       <DividerDisplay date={new Date(chapter!.releaseDate!)} />
       {/* Paginas */}
-      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-20 md:pb-16">
+      <div className="overflow-y-auto m-4 h-5/6 p-3 pb-24 md:pb-20">
         {chapter?.pages?.map((page) => {
           if (page.number === pageNumber) {
             // Compare as numbers
