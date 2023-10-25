@@ -4,14 +4,30 @@ import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import {
   cookiesCheck,
-  findStoredTheme,
+  getStoredTheme,
   saveTheme,
 } from "../localStorage/LocalStorageHandler";
 
 function ThemeHandler() {
   const [currentTheme, setCurrentTheme] = useState(
-    findStoredTheme || document.documentElement.getAttribute("data-theme")
+    getStoredTheme || document.documentElement.getAttribute("data-theme")
   );
+
+  const isLightTheme = () => {
+    if (currentTheme === "light" || currentTheme === "judy") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isDarkTheme = () => {
+    if (currentTheme === "dark" || currentTheme === "hayata") {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const cookiesEnabled = cookiesCheck();
 
@@ -30,25 +46,21 @@ function ThemeHandler() {
       color="primary"
       style={{
         overflow: "hidden",
-        backgroundColor: currentTheme === "dark" ? "#1a1a1a" : "",
+        backgroundColor: isDarkTheme() ? "#1a1a1a" : "",
       }}
-      className={
-        currentTheme === "light" || currentTheme === "judy"
-          ? `bg-[#1565c0]`
-          : `bg-[#1a1a1a]`
-      }
+      className={isLightTheme() ? `bg-[#1565c0]` : `bg-[#1a1a1a]`}
     >
       <Slide
-        direction={currentTheme === "light" ? "left" : "right"}
-        in={currentTheme === "light" || currentTheme === "judy"}
+        direction={isLightTheme() ? "left" : "right"}
+        in={isLightTheme()}
         style={{ position: "absolute" }}
         timeout={450}
       >
         <LightModeRoundedIcon style={{ color: "yellow" }} />
       </Slide>
       <Slide
-        direction={currentTheme === "dark" ? "left" : "right"}
-        in={currentTheme === "dark" || currentTheme === "hayata"}
+        direction={isDarkTheme() ? "left" : "right"}
+        in={isDarkTheme()}
         style={{ position: "absolute" }}
         timeout={450}
       >

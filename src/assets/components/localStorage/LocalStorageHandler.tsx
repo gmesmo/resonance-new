@@ -1,5 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Primeiro aviso de cookies (localStorage)
 function LocalStorageHandler() {
@@ -37,7 +38,7 @@ function LocalStorageHandler() {
 
   return (
     <>
-      {cookiesAlert === true && cookies == false && (
+      {cookiesAlert && !cookies && (
         <div
           className={`flex flex-col text-justify items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
         >
@@ -90,6 +91,48 @@ function cookiesCheck() {
   return cookies;
 }
 
+function JumpToLastPage() {
+  const cookiesEnabled = cookiesCheck();
+  const existingChapter = localStorage.getItem("Last Chapter");
+  const existingPage = localStorage.getItem("Last Page");
+
+  const [isDialogOpen, setIsDialogOpen] = useState(true);
+
+  if (cookiesEnabled && existingChapter && existingPage) {
+    return (
+      <>
+        {isDialogOpen && (
+          <div
+            className={`flex flex-col text-justify items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
+          >
+            Parece que parou no Capítulo {existingChapter}, página{" "}
+            {existingPage}.<span>Deseja continuar sua leitura?</span>
+            <Stack spacing={2} direction={"row"} style={{ marginTop: "1rem" }}>
+              <Button
+                variant="outlined"
+                color="error"
+                onClick={() => setIsDialogOpen(false)}
+              >
+                Não
+              </Button>
+
+              <Link to={`/chapter/${existingChapter}/page/${existingPage}`}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  className="bg-[#1e7924]"
+                >
+                  Claro!
+                </Button>
+              </Link>
+            </Stack>
+          </div>
+        )}
+      </>
+    );
+  }
+}
+
 //Salva escolha feita pelo usuário
 function saveChoice(id: string, choice: number) {
   const existingChoices = JSON.parse(localStorage.getItem("choices") || "{}");
@@ -119,15 +162,29 @@ function saveTheme(theme: string) {
   localStorage.setItem("theme", theme);
 }
 
-function findStoredTheme() {
+function getStoredTheme() {
   const existingThemeJSON = localStorage.getItem("theme");
 
   return existingThemeJSON || null;
 }
 
 function lastRead(lastChapter: string, lastPage: string) {
-  localStorage.setItem("Last chapter", lastChapter);
-  localStorage.setItem("Last page", lastPage);
+  const existingChapter = localStorage.getItem("Last Chapter");
+  const existingPage = localStorage.getItem("LastPage");
+
+  if (existingChapter && existingPage) {
+    if (
+      Number(existingChapter) < Number(lastChapter) ||
+      (Number(existingChapter) === Number(lastChapter) &&
+        Number(existingPage) < Number(lastPage))
+    ) {
+      localStorage.setItem("Last Chapter", lastChapter);
+      localStorage.setItem("Last Page", lastPage);
+    }
+  } else {
+    localStorage.setItem("Last Chapter", lastChapter);
+    localStorage.setItem("Last Page", lastPage);
+  }
 }
 
 export {
@@ -136,6 +193,7 @@ export {
   saveChoice,
   findChoice,
   saveTheme,
-  findStoredTheme,
+  getStoredTheme,
   lastRead,
+  JumpToLastPage,
 };

@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { StyledEngineProvider } from "@mui/material/styles";
-import { findStoredTheme } from "./assets/components/localStorage/LocalStorageHandler.tsx";
+import { getStoredTheme } from "./assets/components/localStorage/LocalStorageHandler.tsx";
 
 // Função para verificar e definir o tema com base no sistema do usuário
 function setThemeBasedOnSystemPreference() {
-  const storedTheme = findStoredTheme();
+  const storedTheme = getStoredTheme();
 
   const prefersDarkMode = window.matchMedia(
     "(prefers-color-scheme: dark)"

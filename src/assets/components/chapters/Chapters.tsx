@@ -55,10 +55,16 @@ function ChapterDisplay() {
     (chapter) => chapter.chapterNumber.toString() === chapterId
   );
 
-  const currentPage = pageId ? parseInt(pageId, 10) : 1; // Convert to a number
+  const currentPage = pageId ? Number(pageId) : 1; // Convert to a number
 
   const [pageNumber, setPageNumber] = useState(currentPage);
-  const [currentChapter, setCurrentChapter] = useState(chapterId);
+  const [currentChapter, setCurrentChapter] = useState(
+    chapter?.chapterNumber || chapterId
+  );
+
+  // useEffect(() => {
+  //   alert(currentPage);
+  // });
 
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPageNumber(value); // Convert to a string for the URL
@@ -99,10 +105,10 @@ function ChapterDisplay() {
 
   //Handler para salvar último capítulo e página lidos
   useEffect(() => {
-    if (cookiesEnabled && chapterId && pageId) {
-      lastRead(currentChapter!.toString(), currentPage.toString());
+    if (cookiesEnabled && currentChapter && pageNumber) {
+      lastRead(currentChapter!.toString(), pageNumber.toString());
     }
-  }, [currentPage]);
+  }, [currentChapter, pageNumber]);
 
   useEffect(() => {
     () => scrollToTop();
@@ -124,7 +130,7 @@ function ChapterDisplay() {
       {/* Paginas */}
       <div className="overflow-y-auto m-4 h-5/6 p-3 pb-24 md:pb-20">
         {chapter?.pages?.map((page) => {
-          if (page.number === pageNumber) {
+          if (page.number === currentPage) {
             // Compare as numbers
             return (
               <div
