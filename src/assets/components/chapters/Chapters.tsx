@@ -102,8 +102,11 @@ function ChapterDisplay() {
     if (cookiesEnabled && chapterId && pageId) {
       lastRead(currentChapter!.toString(), currentPage.toString());
     }
-    () => scrollToTop();
   }, [currentPage]);
+
+  useEffect(() => {
+    () => scrollToTop();
+  }, [currentChapter, currentPage]);
 
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
