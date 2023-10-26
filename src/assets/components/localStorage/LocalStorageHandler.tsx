@@ -165,7 +165,7 @@ function saveTheme(theme: string) {
 function getStoredTheme() {
   const existingThemeJSON = localStorage.getItem("theme");
 
-  return existingThemeJSON || null;
+  return existingThemeJSON || false;
 }
 
 function lastRead(lastChapter: string, lastPage: string) {

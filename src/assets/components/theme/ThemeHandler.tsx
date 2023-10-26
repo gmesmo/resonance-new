@@ -10,7 +10,7 @@ import {
 
 function ThemeHandler() {
   const [currentTheme, setCurrentTheme] = useState(
-    getStoredTheme || document.documentElement.getAttribute("data-theme")
+    getStoredTheme() || document.documentElement.getAttribute("data-theme")
   );
 
   const isLightTheme = () => {
@@ -46,7 +46,6 @@ function ThemeHandler() {
       color="primary"
       style={{
         overflow: "hidden",
-        backgroundColor: isDarkTheme() ? "#1a1a1a" : "",
       }}
       className={isLightTheme() ? `bg-[#1565c0]` : `bg-[#1a1a1a]`}
     >
