@@ -6,7 +6,7 @@ import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Tooltip from "@mui/material/Tooltip";
 import { useState, useEffect } from "react";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
 import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
@@ -94,9 +94,11 @@ function ChapterDisplay() {
     };
   }, [pageNumber, chapter]);
 
-  //Handler para definir primeira página
+  // Handler para definir primeira página
   useEffect(() => {
-    setPageNumber(1);
+    if (Number(pageId) == 1) {
+      setPageNumber(1);
+    }
   }, [chapterId]);
 
   function NextChapter(next: number) {
@@ -198,7 +200,11 @@ function isNewChapter(date: Date) {
 }
 
 function DividerDisplay({ date }: { date: Date }) {
-  if (isNewChapter(date)) {
+  const isoDate = parseISO(date.toISOString());
+
+  console.log(isoDate);
+
+  if (isNewChapter(isoDate)) {
     return (
       <Divider
         variant="middle"
@@ -208,7 +214,7 @@ function DividerDisplay({ date }: { date: Date }) {
           <Chip
             className={`border-orange-500 text-orange-500 border-2 border-solid 
             font-bold`}
-            label={format(date, "dd/MM/yyyy")}
+            label={format(isoDate, "dd/MM/yyyy")}
           />
         </Tooltip>
       </Divider>
@@ -219,7 +225,7 @@ function DividerDisplay({ date }: { date: Date }) {
         <Chip
           className={`border-accent text-accent border-2 border-solid 
             font-bold`}
-          label={format(date, "dd/MM/yyyy")}
+          label={format(isoDate, "dd/MM/yyyy")}
         />
       </Divider>
     );

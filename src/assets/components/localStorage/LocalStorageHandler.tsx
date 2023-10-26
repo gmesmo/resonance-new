@@ -40,7 +40,7 @@ function LocalStorageHandler() {
     <>
       {cookiesAlert && !cookies && (
         <div
-          className={`flex flex-col text-justify items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
+          className={`flex flex-col text-justify items-center absolute z-10 left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
         >
           Esse site utiliza biscoitos para funcionar corretamente, podemos
           guardar eles no seu PC?
@@ -103,7 +103,7 @@ function JumpToLastPage() {
       <>
         {isDialogOpen && (
           <div
-            className={`flex flex-col text-justify items-center absolute left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
+            className={`flex flex-col text-justify items-center absolute z-10 left-1/2 bottom-5 -translate-x-1/2 p-5 w-menu md:w-1/4 bg-slate-500 rounded-lg glass`}
           >
             Parece que parou no Capítulo {existingChapter}, página{" "}
             {existingPage}.<span>Deseja continuar sua leitura?</span>
