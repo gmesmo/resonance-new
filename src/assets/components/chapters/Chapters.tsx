@@ -200,11 +200,7 @@ function isNewChapter(date: Date) {
 }
 
 function DividerDisplay({ date }: { date: Date }) {
-  const isoDate = parseISO(date.toISOString());
-
-  console.log(isoDate);
-
-  if (isNewChapter(isoDate)) {
+  if (isNewChapter(date)) {
     return (
       <Divider
         variant="middle"
@@ -214,7 +210,7 @@ function DividerDisplay({ date }: { date: Date }) {
           <Chip
             className={`border-orange-500 text-orange-500 border-2 border-solid 
             font-bold`}
-            label={format(isoDate, "dd/MM/yyyy")}
+            label={formatCustomDate(date)}
           />
         </Tooltip>
       </Divider>
@@ -225,11 +221,21 @@ function DividerDisplay({ date }: { date: Date }) {
         <Chip
           className={`border-accent text-accent border-2 border-solid 
             font-bold`}
-          label={format(isoDate, "dd/MM/yyyy")}
+          label={formatCustomDate(date)}
         />
       </Divider>
     );
   }
+}
+
+function formatCustomDate(date: Date): string {
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth() + 1; // Adicione 1 porque os meses começam em 0
+  const year = date.getUTCFullYear();
+
+  return `${day < 10 ? "0" : ""}${day}/${
+    month < 10 ? "0" : ""
+  }${month}/${year}`;
 }
 
 export { ChapterSelector, ChapterDisplay };
