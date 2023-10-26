@@ -6,7 +6,6 @@ import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Tooltip from "@mui/material/Tooltip";
 import { useState, useEffect } from "react";
-import { format, parseISO } from "date-fns";
 import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
 import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
@@ -136,7 +135,6 @@ function ChapterDisplay() {
       <div className="overflow-y-auto m-4 h-5/6 p-3 pb-24 md:pb-20">
         {chapter?.pages?.map((page) => {
           if (page.number === pageNumber) {
-            // Compare as numbers
             return (
               <div
                 key={page.number}
@@ -155,7 +153,7 @@ function ChapterDisplay() {
           <Pagination
             count={Math.ceil(chapter.pages.length / itemsPerPage)}
             page={pageNumber}
-            siblingCount={1} // Define o número de itens adjacentes à página atual (0 não exibe nenhum número além do selecionado)
+            siblingCount={1}
             boundaryCount={1}
             onChange={handleChange}
             className="mr-3"
