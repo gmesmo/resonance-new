@@ -6,4 +6,3 @@
 - MUI
 - Tailwind
 - Postcss
-- date-fns
