@@ -33,7 +33,10 @@ function ChapterSelector() {
               <Button
                 key={i}
                 variant="outlined"
-                className="text-white w-full bg-accent hover:border-accent bg-opacity-100 rounded-xl border-accent"
+                className={`text-white w-full bg-accent border-accent hover:border-accent bg-opacity-100 rounded-xl ${
+                  isNewChapter(new Date(chapter.releaseDate)) &&
+                  `border-r-4 hover:border-r-4 border-r-orange-500 hover:border-r-orange-500`
+                }`}
               >
                 {chapter.title}
               </Button>
