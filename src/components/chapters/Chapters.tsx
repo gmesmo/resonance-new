@@ -10,7 +10,9 @@ import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
 import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
 
-function ChapterSelector() {
+type MenuHandlerType = () => void;
+
+function ChapterSelector({ menuHandler }: { menuHandler: MenuHandlerType }) {
   return (
     <div className="flex flex-col w-full my-10">
       <Stack spacing={1} className="w-full">
@@ -29,6 +31,7 @@ function ChapterSelector() {
               key={`link_${i}`}
               to={`/chapter/${chapter.chapterNumber}/page/1`}
               className="w-full"
+              onClick={() => menuHandler()}
             >
               <Button
                 key={i}
