@@ -127,7 +127,9 @@ function ChapterDisplay() {
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
       {/* Título */}
-      <h1 className={`text-accent text-xl md:text-3xl text-center m-4`}>
+      <h1
+        className={`text-accent text-xl md:text-3xl text-center m-4 font-bold`}
+      >
         {chapter &&
           (!chapter.extra
             ? `Capítulo ${
@@ -144,7 +146,7 @@ function ChapterDisplay() {
             return (
               <div
                 key={page.number}
-                className="text-content text-justify indent-10 text-lg"
+                className="text-content text-justify indent-10 text-lg font-weight"
               >
                 <OptionHandler page={page} chapter={chapterId ?? null} />
               </div>

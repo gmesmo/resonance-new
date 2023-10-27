@@ -22,6 +22,9 @@ export default {
       inset: {
         "35%": "35%",
       },
+      fontWeight: {
+        weight: "var(--font-weight)",
+      },
     },
   },
   plugins: [],
