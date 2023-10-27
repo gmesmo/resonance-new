@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   cookiesCheck,
   findChoice,
+  habitsHandler,
   saveChoice,
 } from "../../localStorage/LocalStorageHandler";
 import Button from "@mui/material/Button";
@@ -16,6 +17,15 @@ interface Page {
     reaction: string;
     default?: boolean;
   }[];
+  habits?: {
+    choiceID: number;
+    options: {
+      id: number;
+      text: string;
+      default?: boolean;
+    }[];
+  };
+  continue?: string;
 }
 
 interface OptionHandlerProps {
@@ -83,6 +93,25 @@ const OptionHandler: React.FC<OptionHandlerProps> = ({ page, chapter }) => {
             </ButtonGroup>
           </>
         );
+      }
+    } else if (page.habits) {
+      const originalChapterChoice = habitsHandler(
+        page.habits.choiceID.toString()
+      );
+
+      if (originalChapterChoice !== null) {
+        const fullText =
+          page.text +
+          page.habits.options[originalChapterChoice].text +
+          (page.continue || "");
+        setDisplay(<>{textFormat({ text: fullText })}</>);
+      } else {
+        const defaultHabit = page.habits.options.find(
+          (option) => option.default === true
+        );
+
+        const fullText = page.text + defaultHabit?.text + (page.continue || "");
+        setDisplay(<>{textFormat({ text: fullText })}</>);
       }
     } else {
       const fullText = page.text;

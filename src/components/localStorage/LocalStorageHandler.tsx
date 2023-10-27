@@ -199,6 +199,18 @@ function lastRead(lastChapter: string, lastPage: string) {
   }
 }
 
+function habitsHandler(habitChapter: string) {
+  const existingChoices = JSON.parse(localStorage.getItem("choices") || "{}");
+
+  console.log(habitChapter);
+
+  if (existingChoices[habitChapter]) {
+    return existingChoices[habitChapter];
+  } else {
+    return null;
+  }
+}
+
 export {
   LocalStorageHandler,
   cookiesCheck,
@@ -209,4 +221,5 @@ export {
   lastRead,
   JumpToLastPage,
   LastPageLink,
+  habitsHandler,
 };

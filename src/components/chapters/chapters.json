@@ -227,5 +227,35 @@
         "text": "- O que não pode? - Perguntou Will\n- Ontem a noite eu fui dormir pensando em uma espécie de \"lar\", um refúgio para nós - Ela então notou que estavam confusos com a falta de informação - Foi com esse lugar que sonhei.\n- Não pode ser coincidência - Boris falou - Acho que talvez Ai tenha feito isso, quer dizer, ela nos deu os poderes… Pode muito bem ter colocado essa imagem no seu sonho.\nApós isso, cada um contou seu progresso no treinamento individual, e então mostraram o que conseguiam agora fazer. Will, inevitavelmente se sentiu deslocado, afinal ele não tinha conseguido treinar na noite anterior pois seus poderes eram destrutivos demais para serem utilizados em um hospital.\n- Eu totalmente entendo Will - Boris sorriu de maneira acolhedora - Não esquenta com isso não, aposto que logo vai mostrar do que é capaz!\nO ânimo do garoto que incentivava seu amigo acabou por deixar todos bastante animados, e logo os treinos ao ar livre começaram"
       }
     ]
+  },
+  {
+    "chapterNumber": 7,
+    "title": "Treinamento",
+    "releaseDate": "2023/10/27",
+    "pages": [
+      {
+        "number": 1,
+        "text": "- Acho que primeiro precisamos ver do que cada um é capaz, o maior efeito que conseguimos gerar - Helena começou - Depois vamos ajudar o Will na habilidade dele\n- Bom, eu ainda tenho apenas o Kuro na biblioteca - Boris começou, enquanto se concentrava para realizar sua transformação.\nA primeira coisa a mudar foram os olhos, como de habitual, logo as mãos se alteraram para garras de felino e de baixo da camiseta dele uma cauda peluda e negra se formou. Vendo isso Helena pegou uma pequena pedra no chão e arremessou no colega, que desviou sem dificuldades mesmo sendo pego de surpresa.\n- Porque fez isso?! Quase me acerta! - Boris reclamou\n- Não é sua aparência que muda, comprovei isso agora - A garota começou - Seus reflexos e… equilíbrio - Ela apontou para a cauda do garoto - Foram afetados também.\nLaura e Helena então se encararam, sabendo que a próxima seria uma delas, mas nenhuma delas queria ser a seguinte, após um tempo que pareceu maior do que realmente foi, Boris deu um tapinha nas costas de Laura, incentivando a garota.\n- Bora lá, faz um trem legal - Ele sorriu amistosamente.\nLaura o encarou um pouco, pensando no que fazer e uma imagem apareceu em sua mente, certamente seria impossível criar algo assim, mas a curiosidade dela era maior. Ela respirou fundo e seus cabelos e olhos mudaram de cor, para aqueles dos quais o grupo havia conhecido ela, porém dessa vez algo além apareceu. Não muito distante um rugido digno de um dinossauro bebê ecoou pelo campo, mas ao encararem a criatura era perceptível que não era um dinossauro e sim um pequeno dragão cor bronze. A criatura emitiu mais um rugido, soltando labaredas por sua boca e logo desapareceu, fazendo Laura cair de joelhos no chão.\n- Criar coisas que não existem… - Ela respirou fundo, ofegante - É BEM mais cansativo.\n- Mas foi bem legal - Will fitava o lugar onde a criatura esteve - É inacreditável, pra falar a verdade."
+      },
+      {
+        "number": 2,
+        "text": "Os olhos agora se voltaram para Helena, ela imediatamente lembrou da",
+        "habits": {
+          "choiceID": 63,
+          "options": [
+            {
+              "id": 1,
+              "text": " pequena estrela que havia criado, mas ela sabia que poderia fazer algo maior, do tamanho de uma bola de basquete talvez. \nA garota respirou fundo, soltando o ar logo depois e a estrela foi se formando acima da cabeça dos seus colegas, flutuando como se não tivesse peso, com aproximadamente dois metros de diâmetro. A pequena estrela, ou sol, era gelada e parecia ser o exato oposto de nosso sol, que dava vida.\n- Tantos detalhes - Boris comentou\n- Acho que isso faz parte do poder, mas algo me diz que essa estrela é perigosa… Mais do que parece.\nBoris concordou com a cabeça.",
+              "default": true
+            },
+            {
+              "id": 2,
+              "text": "seccond"
+            }
+          ]
+        },
+        "continue": "\n...continua"
+      }
+    ]
   }
 ]
