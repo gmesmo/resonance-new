@@ -133,6 +133,18 @@ function JumpToLastPage() {
   }
 }
 
+function LastPageLink() {
+  const cookiesEnabled = cookiesCheck();
+  const existingChapter = localStorage.getItem("Last Chapter");
+  const existingPage = localStorage.getItem("Last Page");
+
+  if (cookiesEnabled && existingChapter && existingPage) {
+    return `./chapter/${existingChapter}/page/${existingPage}`;
+  } else {
+    return `./`;
+  }
+}
+
 //Salva escolha feita pelo usuário
 function saveChoice(id: string, choice: number) {
   const existingChoices = JSON.parse(localStorage.getItem("choices") || "{}");
@@ -196,4 +208,5 @@ export {
   getStoredTheme,
   lastRead,
   JumpToLastPage,
+  LastPageLink,
 };
