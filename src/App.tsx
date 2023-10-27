@@ -1,10 +1,10 @@
 import "./App.css";
-import Menu from "./assets/components/menu/Menu";
+import Menu from "./components/menu/Menu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./assets/components/Home";
-import KeySequenceComponent from "./assets/components/theme/custom/KeySequence";
-import { LocalStorageHandler } from "./assets/components/localStorage/LocalStorageHandler";
-import { ChapterDisplay } from "./assets/components/chapters/Chapters";
+import Home from "./components/Home";
+import KeySequenceComponent from "./components/theme/custom/KeySequence";
+import { LocalStorageHandler } from "./components/localStorage/LocalStorageHandler";
+import { ChapterDisplay } from "./components/chapters/Chapters";
 
 function App() {
   return (
