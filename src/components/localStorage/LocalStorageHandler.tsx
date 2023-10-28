@@ -202,8 +202,6 @@ function lastRead(lastChapter: string, lastPage: string) {
 function habitsHandler(habitChapter: string) {
   const existingChoices = JSON.parse(localStorage.getItem("choices") || "{}");
 
-  console.log(habitChapter);
-
   if (existingChoices[habitChapter]) {
     return existingChoices[habitChapter];
   } else {

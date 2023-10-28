@@ -245,16 +245,20 @@
           "options": [
             {
               "id": 1,
-              "text": " pequena estrela que havia criado, mas ela sabia que poderia fazer algo maior, do tamanho de uma bola de basquete talvez. \nA garota respirou fundo, soltando o ar logo depois e a estrela foi se formando acima da cabeça dos seus colegas, flutuando como se não tivesse peso, com aproximadamente dois metros de diâmetro. A pequena estrela, ou sol, era gelada e parecia ser o exato oposto de nosso sol, que dava vida.\n- Tantos detalhes - Boris comentou\n- Acho que isso faz parte do poder, mas algo me diz que essa estrela é perigosa… Mais do que parece.\nBoris concordou com a cabeça.",
+              "text": " pequena estrela que havia criado, mas ela sabia que poderia fazer algo maior, do tamanho de uma bola de basquete talvez. \nA garota respirou fundo, soltando o ar logo depois e a estrela foi se formando acima da cabeça dos seus colegas, flutuando como se não tivesse peso, com aproximadamente dois metros de diâmetro. A pequena estrela, ou sol, era gelada e parecia ser o exato oposto de nosso sol, que dava vida.\n- Tantos detalhes - Boris comentou\n- Acho que isso faz parte do poder, mas algo me diz que essa estrela é perigosa… Mais do que parece - Disse Will.\nBoris concordou com a cabeça.",
               "default": true
             },
             {
               "id": 2,
-              "text": "seccond"
+              "text": " a pequena tempestade que havia criado, mas ela sabia que poderia fazer algo maior, um conjunto de nuvens talvez?\n A garota respirou fundo, soltando o ar logo depois e as nuvens começaram a se formar acima da cabeça dos seus colegas, flutuando levemente, com aproximadamente três metros de diâmetro. As nuvens, ou pequena tempestade, era quente e parecia ser o exato oposto do que se espera, o calor parecia dar vida ao invés de tirá-la com seus raios.\n- Tantos detalhes - Boris comentou\n- Acho que isso faz parte do poder, mas algo me diz que essas nuvens não são tão inofensivas - Disse Will.\nBoris concordou com a cabeça."
             }
           ]
         },
-        "continue": "\n...continua"
+        "continue": "\n- Acho que é minha vez agora, é melhor vocês irem para trás de mim - Will falou, imediatamente todos se encaminharam para trás do garoto, que pegou uma pedra e a posicionou em sua mão.\nRepentinamente com um estrondo a pedra se estilhaçou, os pedaços pareciam quentes, levemente incandescentes.\n- Bom, isso não foi como o esperado - Will coçou a cabeça, sorrindo sem jeito\n- Eu ainda não entendi bem o que você faz, Will - Laura começou, esperando uma resposta\n- Para falar a verdade eu não entendi completamente ainda, mas é como se eu sentisse alguma ligação ao usar meus poderes - Will começou a explicar - E dependendo dela, coisas diferentes acontecem.\n- Ligação? - Helena questionou sem entender\n- Bom, nesse caso aqui eu lembrei do incendiário problemático."
+      },
+      {
+        "number": 3,
+        "text": "- Quer dizer que meio que se conectou com ele? - Boris perguntou - Tipo, usou os poderes dele.\n- Algo assim, eu acho - Will sorriu sem jeito - Mas não é bem isso, parece.\n- Que tal tentar ir na água e usar seus poderes? - Ofereceu Helena - Quer dizer, se vier algo de fogo pelo menos não vai explodir tudo aqui perto, né?\n- Eu vou me encharcar! - O garoto reclamou, visivelmente incomodado\nÉ melhor do que usar nessa linda paisagem, quer detonar com nosso campo de treinamento?\nNisso ela tem razão Will - Boris se aproximou de Helena, reforçando o argumento\nQue seja então…"
       }
     ]
   }
