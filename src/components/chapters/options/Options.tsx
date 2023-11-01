@@ -99,12 +99,12 @@ const OptionHandler: React.FC<OptionHandlerProps> = ({ page, chapter }) => {
         page.habits.choiceID.toString()
       );
 
-      const chosenHabit = page.habits.options.find(
-        (option) => option.id === originalChapterChoice[0]
-      );
+      if (originalChapterChoice) {
+        const chosenHabit = page.habits.options.find(
+          (option) => option.id.toString() === originalChapterChoice.toString()
+        );
 
-      if (chosenHabit) {
-        const fullText = page.text + chosenHabit.text + (page.continue || "");
+        const fullText = page.text + chosenHabit!.text + (page.continue || "");
         setDisplay(<>{textFormat({ text: fullText })}</>);
       } else {
         const defaultHabit = page.habits.options.find(
