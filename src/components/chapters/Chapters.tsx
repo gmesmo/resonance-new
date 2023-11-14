@@ -109,7 +109,7 @@ function ChapterDisplay() {
     if (Number(pageId) == 1) {
       setPageNumber(1);
     }
-    setCurrentChapter(chapterId! || 0);
+    setCurrentChapter(chapterId! || "0");
   }, [chapterId]);
 
   function NextChapter(next: number) {
