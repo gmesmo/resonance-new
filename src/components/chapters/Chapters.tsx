@@ -200,6 +200,27 @@ function ChapterDisplay() {
   );
 }
 
+function ChapterCreator() {
+  return (
+    <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
+      <form>
+        <h1
+          className={`text-accent text-xl md:text-3xl text-center m-4 font-bold`}
+        >
+          Capítulo{" "}
+          <input className={`w-12 text-center bg-gray-700 rounded-lg`}></input>{" "}
+          {` - `}
+          <input
+            className={` text-center bg-gray-700 rounded-lg`}
+            placeholder="título"
+          />
+        </h1>
+        <DividerDisplay date={new Date()} />
+      </form>
+    </Card>
+  );
+}
+
 function isNewChapter(date: Date) {
   const currentDate = new Date();
   const sevendays = new Date(currentDate);
@@ -251,4 +272,4 @@ function formatCustomDate(date: Date): string {
   }${month}/${year}`;
 }
 
-export { ChapterSelector, ChapterDisplay };
+export { ChapterSelector, ChapterDisplay, ChapterCreator };

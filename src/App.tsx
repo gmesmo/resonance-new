@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import KeySequenceComponent from "./components/theme/custom/KeySequence";
 import { LocalStorageHandler } from "./components/localStorage/LocalStorageHandler";
-import { ChapterDisplay } from "./components/chapters/Chapters";
+import { ChapterCreator, ChapterDisplay } from "./components/chapters/Chapters";
 import { ChapterProvider } from "./components/chapters/context/context";
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
             />
             <Route path="/chapter/:chapterId" element={<ChapterDisplay />} />
             <Route path="/" element={<Home />} />
+            <Route path="/creator" element={<ChapterCreator />} />
           </Routes>
 
           <LocalStorageHandler />
