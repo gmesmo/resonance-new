@@ -9,10 +9,13 @@ import { useState, useEffect } from "react";
 import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
 import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
+import { useChapterContext } from "./context/context";
 
 type MenuHandlerType = () => void;
 
 function ChapterSelector({ menuHandler }: { menuHandler: MenuHandlerType }) {
+  const { currentChapter, setCurrentChapter } = useChapterContext();
+
   return (
     <div className="flex flex-col w-full my-10">
       <Stack spacing={1} className="w-full">
@@ -39,7 +42,11 @@ function ChapterSelector({ menuHandler }: { menuHandler: MenuHandlerType }) {
                 className={`text-white w-full bg-accent border-accent hover:border-accent bg-opacity-100 rounded-xl ${
                   isNewChapter(new Date(chapter.releaseDate)) &&
                   `border-r-4 hover:border-r-4 border-r-orange-500 hover:border-r-orange-500`
-                }`}
+                }
+                ${
+                  currentChapter === chapter.chapterNumber.toString() &&
+                  `font-bold`
+                }  `}
               >
                 {chapter.title}
               </Button>
@@ -63,9 +70,7 @@ function ChapterDisplay() {
   const currentPage = pageId ? Number(pageId) : 1; // Convert to a number
 
   const [pageNumber, setPageNumber] = useState(currentPage);
-  const [currentChapter, setCurrentChapter] = useState(
-    chapter?.chapterNumber || chapterId
-  );
+  const { currentChapter, setCurrentChapter } = useChapterContext();
 
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPageNumber(value); // Convert to a string for the URL
@@ -104,9 +109,11 @@ function ChapterDisplay() {
     if (Number(pageId) == 1) {
       setPageNumber(1);
     }
+    setCurrentChapter(chapterId! || 0);
   }, [chapterId]);
 
   function NextChapter(next: number) {
+    console.log(next);
     setCurrentChapter(`${next}`);
     setPageNumber(1);
   }
