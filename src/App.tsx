@@ -4,12 +4,9 @@ import Home from "./components/Home";
 import KeySequenceComponent from "./components/theme/custom/KeySequence";
 import { LocalStorageHandler } from "./components/localStorage/LocalStorageHandler";
 import { ChapterDisplay } from "./components/chapters/Chapters";
-import { useState } from "react";
 import { ChapterProvider } from "./components/chapters/context/context";
 
 function App() {
-  const [currentChapter, setCurrentChapter] = useState("0");
-
   return (
     <Router>
       <ChapterProvider>
