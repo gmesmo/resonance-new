@@ -14,7 +14,7 @@ import { useChapterContext } from "./context/context";
 type MenuHandlerType = () => void;
 
 function ChapterSelector({ menuHandler }: { menuHandler: MenuHandlerType }) {
-  const { currentChapter, setCurrentChapter } = useChapterContext();
+  const { currentChapter } = useChapterContext();
 
   return (
     <div className="flex flex-col w-full my-10">
