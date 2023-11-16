@@ -29,7 +29,7 @@ type Pages = {
   number: number;
   text: string;
   options?: Options;
-  habits?: string;
+  habits?: Habits;
   continue?: string;
 };
 
@@ -285,6 +285,21 @@ function ChapterCreator() {
           value={newChapter[0].releaseDate}
           onChange={handleChange}
         />
+        <div className="overflow-y-auto m-4 h-5/6 p-3 pb-24 md:pb-20">
+          {newChapter[0].pages?.map((page) => {
+            return (
+              <div
+                key={page.number}
+                className="text-content text-justify indent-10 text-lg font-weight"
+              >
+                <input
+                  className={`bg-gray-700 rounded-lg pl-2`}
+                  value={page.text}
+                />
+              </div>
+            );
+          })}
+        </div>
       </form>
     </Card>
   );
