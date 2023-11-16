@@ -5,13 +5,54 @@ import { Link, useParams } from "react-router-dom";
 import { Card, Chip, Pagination } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Tooltip from "@mui/material/Tooltip";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
 import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
 import { useChapterContext } from "./context/context";
 
 type MenuHandlerType = () => void;
+
+type Habits = {
+  choiceID: number;
+  options: Options;
+};
+
+type Options = {
+  id: number;
+  text: string;
+  reaction?: string;
+  default?: boolean;
+};
+
+type Pages = {
+  number: number;
+  text: string;
+  options?: Options;
+  habits?: string;
+  continue?: string;
+};
+
+type Chapter = {
+  chapterNumber: number;
+  title: string;
+  releaseDate: string;
+  pages: Pages[];
+};
+
+const defaultChapter: Chapter[] = [
+  {
+    chapterNumber: 0,
+    title: "Capítulo Novo",
+    releaseDate: "2023-10-19",
+    pages: [
+      {
+        number: 0,
+        text: "Digite aqui...",
+      },
+    ],
+  },
+];
 
 function ChapterSelector({ menuHandler }: { menuHandler: MenuHandlerType }) {
   const { currentChapter } = useChapterContext();
@@ -201,6 +242,20 @@ function ChapterDisplay() {
 }
 
 function ChapterCreator() {
+  const [newChapter, setNewChapter] = useState(defaultChapter);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    field: keyof Chapter
+  ) => {
+    setNewChapter((prev) => [
+      {
+        ...prev[0],
+        [field]: e.target.value,
+      },
+    ]);
+  };
+
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
       <form>
@@ -208,14 +263,23 @@ function ChapterCreator() {
           className={`text-accent text-xl md:text-3xl text-center m-4 font-bold`}
         >
           Capítulo{" "}
-          <input className={`w-12 text-center bg-gray-700 rounded-lg`}></input>{" "}
+          <input
+            className={`w-12 text-center bg-gray-700 rounded-lg`}
+            value={newChapter[0].chapterNumber}
+            onChange={(e) => handleChange(e, "chapterNumber")}
+          />{" "}
           {` - `}
           <input
             className={` text-center bg-gray-700 rounded-lg`}
             placeholder="título"
+            value={newChapter[0].title}
+            onChange={(e) => handleChange(e, "title")}
           />
         </h1>
-        <DividerDisplay date={new Date()} />
+        <DividerEditor
+          releaseDate={newChapter[0].releaseDate}
+          onChange={(e) => handleChange(e, "releaseDate")}
+        />
       </form>
     </Card>
   );
@@ -261,6 +325,34 @@ function DividerDisplay({ date }: { date: Date }) {
     );
   }
 }
+
+type DividerEditorProps = {
+  releaseDate: string;
+  onChange: (newReleaseDate: string) => void;
+};
+
+const DividerEditor: React.FC<DividerEditorProps> = ({
+  releaseDate,
+  onChange,
+}) => {
+  const handleReleaseDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(event);
+  };
+
+  return (
+    <Divider
+      variant="middle"
+      className={`before:bg-orange-500 after:bg-orange-500`}
+    >
+      <input
+        type="date"
+        className="bg-gray-700 p-1 rounded-lg text-orange-500"
+        value={releaseDate}
+        onChange={handleReleaseDateChange}
+      />
+    </Divider>
+  );
+};
 
 function formatCustomDate(date: Date): string {
   const day = date.getUTCDate();
