@@ -47,7 +47,7 @@ const defaultChapter: Chapter[] = [
     releaseDate: "2023-10-19",
     pages: [
       {
-        number: 0,
+        number: 1,
         text: "Digite aqui...",
       },
     ],
@@ -256,6 +256,10 @@ function ChapterCreator() {
     ]);
   };
 
+  useEffect(() => {
+    console.log(newChapter);
+  }, [newChapter]);
+
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
       <form>
@@ -277,8 +281,9 @@ function ChapterCreator() {
           />
         </h1>
         <DividerEditor
-          releaseDate={newChapter[0].releaseDate}
-          onChange={(e) => handleChange(e, "releaseDate")}
+          field="releaseDate"
+          value={newChapter[0].releaseDate}
+          onChange={handleChange}
         />
       </form>
     </Card>
@@ -326,17 +331,19 @@ function DividerDisplay({ date }: { date: Date }) {
   }
 }
 
-type DividerEditorProps = {
-  releaseDate: string;
-  onChange: (newReleaseDate: string) => void;
-};
+interface DividerEditorProps {
+  field: keyof Chapter;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>, field: keyof Chapter) => void;
+}
 
 const DividerEditor: React.FC<DividerEditorProps> = ({
-  releaseDate,
+  field,
+  value,
   onChange,
 }) => {
-  const handleReleaseDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(event);
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(event, field);
   };
 
   return (
@@ -347,8 +354,8 @@ const DividerEditor: React.FC<DividerEditorProps> = ({
       <input
         type="date"
         className="bg-gray-700 p-1 rounded-lg text-orange-500"
-        value={releaseDate}
-        onChange={handleReleaseDateChange}
+        value={value}
+        onChange={handleInputChange}
       />
     </Divider>
   );
