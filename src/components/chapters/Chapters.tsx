@@ -2,7 +2,14 @@ import chapters from "./chapters.json";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link, useParams } from "react-router-dom";
-import { Card, Chip, Pagination } from "@mui/material";
+import {
+  Fab,
+  Fade,
+  Card,
+  Chip,
+  Pagination,
+  TextareaAutosize,
+} from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Tooltip from "@mui/material/Tooltip";
 import { useState, useEffect, ChangeEvent } from "react";
@@ -10,6 +17,8 @@ import { OptionHandler } from "./options/Options";
 import { scrollToTop } from "../theme/ThemeHandler";
 import { cookiesCheck, lastRead } from "../localStorage/LocalStorageHandler";
 import { useChapterContext } from "./context/context";
+import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
+import ViewHeadlineRoundedIcon from "@mui/icons-material/ViewHeadlineRounded";
 
 type MenuHandlerType = () => void;
 
@@ -43,12 +52,12 @@ type Chapter = {
 const defaultChapter: Chapter[] = [
   {
     chapterNumber: 0,
-    title: "Capítulo Novo",
-    releaseDate: "2023-10-19",
+    title: "",
+    releaseDate: "2023-11-19",
     pages: [
       {
         number: 1,
-        text: "Digite aqui...",
+        text: "",
       },
     ],
   },
@@ -242,7 +251,11 @@ function ChapterDisplay() {
 }
 
 function ChapterCreator() {
-  const [newChapter, setNewChapter] = useState(defaultChapter);
+  const [newChapter, setNewChapter] = useState<Chapter[]>(() => [
+    ...defaultChapter,
+  ]);
+
+  const [isViewMode, setIsViewMode] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -256,49 +269,102 @@ function ChapterCreator() {
     ]);
   };
 
+  const handlePageChange = (
+    e: ChangeEvent<HTMLTextAreaElement>,
+    field: keyof Chapter | keyof Pages
+  ) => {
+    setNewChapter((prev) => {
+      const updatedChapter: Chapter[] = prev.map((chapter) => ({ ...chapter }));
+
+      if (field === "pages") {
+        const pages = prev[0].pages || [];
+        updatedChapter[0].pages = pages.map((page) => ({ ...page }));
+      } else if (field === "text" && updatedChapter[0].pages) {
+        // Se estiver alterando o texto da página, encontrar a página atual
+        const currentPage = updatedChapter[0].pages.find(
+          (page) => page.number === 1
+        );
+        if (currentPage) {
+          currentPage.text = e.target.value;
+        }
+      }
+
+      return updatedChapter;
+    });
+  };
+
   useEffect(() => {
     console.log(newChapter);
   }, [newChapter]);
 
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
+      <Fab
+        className={`absolute right-2 top-2`}
+        onClick={() => setIsViewMode(!isViewMode)}
+        color={"primary"}
+      >
+        <Fade in={!isViewMode} timeout={500}>
+          <Tooltip title={`Editar`}>
+            <EditNoteRoundedIcon />
+          </Tooltip>
+        </Fade>
+        <Fade in={isViewMode} timeout={500} style={{ position: "absolute" }}>
+          <Tooltip title={`Preview`}>
+            <ViewHeadlineRoundedIcon />
+          </Tooltip>
+        </Fade>
+      </Fab>
       <form>
         <h1
           className={`text-accent text-xl md:text-3xl text-center m-4 font-bold`}
         >
           Capítulo{" "}
-          <input
-            className={`w-12 text-center bg-gray-700 rounded-lg`}
-            value={newChapter[0].chapterNumber}
-            onChange={(e) => handleChange(e, "chapterNumber")}
-          />{" "}
-          {` - `}
-          <input
-            className={` text-center bg-gray-700 rounded-lg`}
-            placeholder="título"
-            value={newChapter[0].title}
-            onChange={(e) => handleChange(e, "title")}
-          />
+          {isViewMode ? (
+            <>
+              {newChapter[0].chapterNumber} - {newChapter[0].title}
+            </>
+          ) : (
+            <>
+              <input
+                className={`w-12 text-center bg-gray-700 rounded-lg`}
+                value={newChapter[0].chapterNumber}
+                onChange={(e) => handleChange(e, "chapterNumber")}
+              />{" "}
+              {` - `}
+              <input
+                className={`text-center bg-gray-700 rounded-lg`}
+                placeholder="Título do capítulo"
+                value={newChapter[0].title}
+                onChange={(e) => handleChange(e, "title")}
+              />
+            </>
+          )}
         </h1>
-        <DividerEditor
-          field="releaseDate"
-          value={newChapter[0].releaseDate}
-          onChange={handleChange}
-        />
+        {isViewMode ? (
+          <DividerDisplay date={new Date(newChapter[0].releaseDate)} />
+        ) : (
+          <>
+            <DividerEditor
+              field="releaseDate"
+              value={newChapter[0].releaseDate}
+              onChange={(e) => handleChange(e, "releaseDate")}
+            />
+          </>
+        )}
         <div className="overflow-y-auto m-4 h-5/6 p-3 pb-24 md:pb-20">
-          {newChapter[0].pages?.map((page) => {
-            return (
-              <div
-                key={page.number}
-                className="text-content text-justify indent-10 text-lg font-weight"
-              >
-                <input
-                  className={`bg-gray-700 rounded-lg pl-2`}
-                  value={page.text}
-                />
-              </div>
-            );
-          })}
+          {newChapter[0].pages?.map((page) => (
+            <div
+              key={page.number}
+              className="text-content text-justify text-lg font-weight "
+            >
+              <TextareaAutosize
+                value={page.text}
+                className={`p-2 bg-gray-700 w-full overflow-hidden m-0 focus-visible:outline-0 h-auto`}
+                onChange={(e) => handlePageChange(e, "text")}
+              />
+            </div>
+          ))}
         </div>
       </form>
     </Card>
@@ -368,7 +434,7 @@ const DividerEditor: React.FC<DividerEditorProps> = ({
     >
       <input
         type="date"
-        className="bg-gray-700 p-1 rounded-lg text-orange-500"
+        className="bg-gray-700 p-1 text-center rounded-lg text-orange-500"
         value={value}
         onChange={handleInputChange}
       />
