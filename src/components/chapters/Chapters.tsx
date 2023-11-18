@@ -34,13 +34,25 @@ type Options = {
   default?: boolean;
 };
 
-type Pages = {
+interface Pages {
   number: number;
   text: string;
-  options?: Options;
-  habits?: Habits;
+  options?: {
+    id: number;
+    text: string;
+    reaction: string;
+    default?: boolean;
+  }[];
+  habits?: {
+    choiceID: number;
+    options: {
+      id: number;
+      text: string;
+      default?: boolean;
+    }[];
+  };
   continue?: string;
-};
+}
 
 type Chapter = {
   chapterNumber: number;
@@ -293,9 +305,9 @@ function ChapterCreator() {
     });
   };
 
-  useEffect(() => {
-    console.log(newChapter);
-  }, [newChapter]);
+  // useEffect(() => {
+  //   console.log(newChapter);
+  // }, [newChapter]);
 
   return (
     <Card className="relative bg-bg w-11/12 md:w-3/4 h-5/6 mx-auto self-center rounded-lg">
@@ -358,11 +370,20 @@ function ChapterCreator() {
               key={page.number}
               className="text-content text-justify text-lg font-weight "
             >
-              <TextareaAutosize
-                value={page.text}
-                className={`p-2 bg-gray-700 w-full overflow-hidden m-0 focus-visible:outline-0 h-auto`}
-                onChange={(e) => handlePageChange(e, "text")}
-              />
+              {isViewMode ? (
+                <>
+                  <OptionHandler
+                    page={page}
+                    chapter={newChapter[0].chapterNumber.toString() ?? null}
+                  />
+                </>
+              ) : (
+                <TextareaAutosize
+                  value={page.text.replace(/\\n/g, "\n")}
+                  className={`p-2 bg-gray-700 w-full overflow-hidden m-0 focus-visible:outline-0 h-auto`}
+                  onChange={(e) => handlePageChange(e, "text")}
+                />
+              )}
             </div>
           ))}
         </div>

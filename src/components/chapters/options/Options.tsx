@@ -139,9 +139,21 @@ const DefaultOption: React.FC<DefaultOptionProps> = ({ page }) => {
 
 function textFormat(props: TextFormatProps) {
   const text = props.text;
-  return text
-    .split("\n")
-    .map((str: string, index: number) => <p key={index}>{str}</p>);
+
+  console.log("Texto recebido para formatação:", text);
+
+  if (!text) {
+    console.warn("O texto recebido está vazio.");
+    return null; // ou <></> se preferir
+  }
+
+  const paragraphs = text.split("\n");
+
+  console.log("Parágrafos após a divisão:", paragraphs);
+
+  return paragraphs.map((str: string, index: number) => (
+    <p key={index}>{str}</p>
+  ));
 }
 
 // function choiceId({ page }: { page: Page }) {
